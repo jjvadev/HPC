@@ -4,7 +4,7 @@ set -euo pipefail
 DIR="$(cd "$(dirname "$0")" && pwd)"
 SRC="$DIR/linux_mod.c"
 BIN="$DIR/secuencial_o3"
-OUT="$DIR/times_secuencial_o.txt"
+OUT="$DIR/times_secuencial_o3.txt"
 
 if [ ! -f "$SRC" ]; then
   echo "No se encontro el codigo fuente: $SRC" >&2
