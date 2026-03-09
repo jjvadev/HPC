@@ -8,7 +8,6 @@ OUT="$DIR/output/output_hilos.txt"
 
 
 #Compilar
-
 echo "Compilando $SRC -> $BIN"
 gcc -pthread "$SRC" -o "$BIN"
 echo "Compilacion hecha"
@@ -25,7 +24,7 @@ echo "Ejecutando benchmarks..."
 for round in {1..10}; do
     echo "  Ronda $round/10..."
     for size in 400 800 1000 2000 4000 6000; do
-        for threads in 2 4 8 16 32; do
+        for threads in 2 4 8 16; do
             "$BIN" "$size" "$threads" 1 123456789 >> "$OUT"
         done
     done
