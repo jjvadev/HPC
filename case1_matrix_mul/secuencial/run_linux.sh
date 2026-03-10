@@ -2,19 +2,19 @@
 set -euo pipefail
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
-SRC="$DIR/linux_mod.c"
-BIN="$DIR/secuencial_o3"
-OUT="$DIR/times_secuencial_o3.txt"
+SRC="$DIR/NoHilosCache.c"
+BIN="$DIR/NoHilosCache"
+OUT="$DIR/times_secuencia_transpuesta.txt"
 
 if [ ! -f "$SRC" ]; then
   echo "No se encontro el codigo fuente: $SRC" >&2
   exit 1
 fi
 
-# Compila solo si hace falta (o si linux_mod.c es mas nuevo que el binario).
+# Compila solo si hace falta (o si NoHilosCache.c es mas nuevo que el binario).
 if [ ! -x "$BIN" ] || [ "$SRC" -nt "$BIN" ]; then
   echo "Compilando $SRC -> $BIN"
-  cc -O2 -std=c11 "$SRC" -o "$BIN"
+  cc "$SRC" -o "$BIN"
 fi
 
 # Encabezado opcional para identificar columnas del programa.
