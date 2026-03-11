@@ -8,7 +8,7 @@ OUT="$DIR/output/output_procesos.txt"
 
 # Compilar
 echo "Compilando $SRC -> $BIN"
-gcc -std=c11 "$SRC" -o "$BIN"
+gcc "$SRC" -o "$BIN"
 echo "Compilacion hecha"
 
 # Asegurar carpeta de salida
