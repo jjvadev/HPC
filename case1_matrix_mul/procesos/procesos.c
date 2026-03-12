@@ -7,7 +7,11 @@
 #include <time.h>
 #include <unistd.h> // Funciones como fork
 #include <sys/wait.h> // Para la espera de procesos
-#include <sys/mman.h> // Para la memoria compartida para los procesos
+#if defined(__APPLE__)
+  #define _DARWIN_C_SOURCE
+#endif
+#include <sys/mman.h>
+
 
 // ============================================================
 //  TIEMPOS
@@ -106,7 +110,7 @@ static int allocate_matrices(int N, int32_t **A, int32_t **B) {
 // allocate_shared_matrix:
 // Reserva C con mmap en modo compartido para que padre e hijos vean
 // el MISMO arreglo de salida.
-// MAP_ANONYMOUS: no viene de archivo.
+// MAP_ANON: no viene de archivo.
 // MAP_SHARED: cambios visibles entre procesos.
 static int32_t *allocate_shared_matrix(int N) {
 	size_t bytes = (size_t)N * (size_t)N * sizeof(int32_t);
