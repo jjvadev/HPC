@@ -23,7 +23,7 @@ echo "Ejecutando benchmarks..."
 for round in {1..10}; do
     echo "  Ronda $round/10..."
     for size in 400 600 800 1000 2000 4000 5500 6000 8000; do
-        for procesos in 2 4 8 16; do
+        for procesos in 2 4; do
             "$BIN" "$size" "$procesos" 1 123456789 >> "$OUT"
         done
     done
