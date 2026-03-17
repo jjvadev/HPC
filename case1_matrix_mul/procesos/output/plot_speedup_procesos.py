@@ -6,7 +6,10 @@ import numpy as np
 
 BASE_DIR = Path(__file__).resolve().parent
 SEQUENTIAL_FILE = BASE_DIR.parent.parent / "secuencial" / "output" / "times_secuencial.txt"
-PROCESSES_FILE = BASE_DIR / "output_procesos.txt"
+PROCESSES_FILES = (
+    BASE_DIR / "output_procesos.txt",
+    BASE_DIR / "output_procesos_8-16.txt",
+)
 OUTPUT_FIGURE = BASE_DIR / "speedup_procesos_vs_secuencial.png"
 PROCESS_COUNTS = (2, 4, 8, 16)
 
@@ -41,34 +44,38 @@ def load_average_sequential_times(path: Path) -> dict[int, float]:
     }
 
 
-def load_average_process_times(path: Path) -> dict[int, dict[int, float]]:
+def load_average_process_times(paths: tuple[Path, ...]) -> dict[int, dict[int, float]]:
     grouped_times: dict[int, dict[int, list[float]]] = {}
 
-    with path.open("r", encoding="utf-8") as file:
-        next(file)
-        for line_number, raw_line in enumerate(file, start=2):
-            line = raw_line.strip()
-            if not line:
-                continue
+    for path in paths:
+        if not path.exists():
+            continue
 
-            parts = line.split()
-            if len(parts) == 9:
-                n_value = int(parts[0])
-                process_count = int(parts[1])
-                wall_time = float(parts[3])
-            elif len(parts) == 6:
-                n_value = int(parts[0])
-                process_count = int(parts[1])
-                wall_time = float(parts[3])
-            else:
-                raise ValueError(
-                    f"Formato inesperado en {path.name}:{line_number}: {line}"
-                )
+        with path.open("r", encoding="utf-8") as file:
+            next(file)
+            for line_number, raw_line in enumerate(file, start=2):
+                line = raw_line.strip()
+                if not line:
+                    continue
 
-            if process_count not in PROCESS_COUNTS:
-                continue
+                parts = line.split()
+                if len(parts) == 9:
+                    n_value = int(parts[0])
+                    process_count = int(parts[1])
+                    wall_time = float(parts[3])
+                elif len(parts) == 6:
+                    n_value = int(parts[0])
+                    process_count = int(parts[1])
+                    wall_time = float(parts[3])
+                else:
+                    raise ValueError(
+                        f"Formato inesperado en {path.name}:{line_number}: {line}"
+                    )
 
-            grouped_times.setdefault(n_value, {}).setdefault(process_count, []).append(wall_time)
+                if process_count not in PROCESS_COUNTS:
+                    continue
+
+                grouped_times.setdefault(n_value, {}).setdefault(process_count, []).append(wall_time)
 
     averaged: dict[int, dict[int, float]] = {}
     for n_value, process_map in sorted(grouped_times.items()):
@@ -82,7 +89,7 @@ def load_average_process_times(path: Path) -> dict[int, dict[int, float]]:
 
 def main() -> None:
     sequential_times = load_average_sequential_times(SEQUENTIAL_FILE)
-    process_times = load_average_process_times(PROCESSES_FILE)
+    process_times = load_average_process_times(PROCESSES_FILES)
 
     common_sizes = sorted(set(sequential_times) & set(process_times))
     if not common_sizes:
