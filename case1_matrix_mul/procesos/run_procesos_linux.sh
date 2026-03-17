@@ -4,7 +4,7 @@ set -euo pipefail
 DIR="$(cd "$(dirname "$0")" && pwd)"
 SRC="$DIR/procesos.c"
 BIN="$DIR/procesos"
-OUT="$DIR/output/output_procesos.txt"
+OUT="$DIR/output/output_procesos_8-16.txt"
 
 # Compilar
 echo "Compilando $SRC -> $BIN"
@@ -23,7 +23,7 @@ echo "Ejecutando benchmarks..."
 for round in {1..10}; do
     echo "  Ronda $round/10..."
     for size in 400 600 800 1000 2000 4000 5500 6000 8000; do
-        for procesos in 2 4; do
+        for procesos in 8 16; do
             "$BIN" "$size" "$procesos" 1 123456789 >> "$OUT"
         done
     done
