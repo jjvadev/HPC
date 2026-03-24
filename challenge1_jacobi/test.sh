@@ -7,9 +7,9 @@ export LC_ALL=C
 # =========================================================
 # Configuración
 # =========================================================
-dimensions=(100 1000)
+dimensions=(10000 100000 1000000 2000000 4000000 5000000)
 nSweeps=15000
-iterations=2
+iterations=10
 thread_counts=(2 4 8 16)
 process_counts=(2 4 8 16)
 results_dir="results"
