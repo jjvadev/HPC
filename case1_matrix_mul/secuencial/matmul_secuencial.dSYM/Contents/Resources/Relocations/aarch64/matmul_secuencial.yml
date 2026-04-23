@@ -1,5 +1,0 @@
----
-triple:          'arm64-apple-darwin'
-binary-path:     './case1_matrix_mul/secuencial/matmul_secuencial'
-relocations:     []
-...
