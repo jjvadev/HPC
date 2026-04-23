@@ -1,0 +1,86 @@
+Weight	Self Weight	Symbol Names
+47.21 s  100,0 %	0 s	 matmul_optimizado_memoria (71934)
+47.21 s  100,0 %	0 s	  start
+47.21 s  100,0 %	0 s	   main
+46.92 s  99,4 %	46.92 s	    matmul
+271.00 ms   0,6 %	15.00 ms	    fill_random_matrices
+145.00 ms   0,3 %	145.00 ms	     rand
+111.00 ms   0,2 %	48.00 ms	     rand_i32
+63.00 ms   0,1 %	63.00 ms	      DYLD-STUB$$rand
+16.00 ms   0,0 %	16.00 ms	    zero_matrix
+6.00 ms   0,0 %	6.00 ms	    checksum_matrix
+3.00 ms   0,0 %	3.00 ms	    rand_i32
+1.00 ms   0,0 %	0 s	   dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const
+1.00 ms   0,0 %	0 s	    dyld4::prepare(dyld4::APIs&, mach_o::UnsafeHeader const*)
+1.00 ms   0,0 %	0 s	     dyld4::RuntimeState::notifyDtrace(std::__1::span<dyld4::Loader const*, 18446744073709551615ul> const&)
+1.00 ms   0,0 %	0 s	      dyld4::SyscallDelegate::dtraceRegisterUserProbes(dof_ioctl_data*) const
+1.00 ms   0,0 %	1.00 ms	       __open
+1.00 ms   0,0 %	0 s	  start
+1.00 ms   0,0 %	1.00 ms	   0x1005fced5
+
+Weight	Self Weight	Symbol Names
+47.21 s  100,0 %	0 s	  start
+47.21 s  100,0 %	0 s	   main
+46.92 s  99,4 %	46.92 s	    matmul
+271.00 ms   0,6 %	15.00 ms	    fill_random_matrices
+145.00 ms   0,3 %	145.00 ms	     rand
+111.00 ms   0,2 %	48.00 ms	     rand_i32
+63.00 ms   0,1 %	63.00 ms	      DYLD-STUB$$rand
+16.00 ms   0,0 %	16.00 ms	    zero_matrix
+6.00 ms   0,0 %	6.00 ms	    checksum_matrix
+3.00 ms   0,0 %	3.00 ms	    rand_i32
+1.00 ms   0,0 %	0 s	   dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const
+1.00 ms   0,0 %	0 s	    dyld4::prepare(dyld4::APIs&, mach_o::UnsafeHeader const*)
+1.00 ms   0,0 %	0 s	     dyld4::RuntimeState::notifyDtrace(std::__1::span<dyld4::Loader const*, 18446744073709551615ul> const&)
+1.00 ms   0,0 %	0 s	      dyld4::SyscallDelegate::dtraceRegisterUserProbes(dof_ioctl_data*) const
+1.00 ms   0,0 %	1.00 ms	       __open
+
+Weight	Self Weight	Symbol Names
+47.21 s  100,0 %	0 s	   main
+46.92 s  99,4 %	46.92 s	    matmul
+271.00 ms   0,6 %	15.00 ms	    fill_random_matrices
+145.00 ms   0,3 %	145.00 ms	     rand
+111.00 ms   0,2 %	48.00 ms	     rand_i32
+63.00 ms   0,1 %	63.00 ms	      DYLD-STUB$$rand
+16.00 ms   0,0 %	16.00 ms	    zero_matrix
+6.00 ms   0,0 %	6.00 ms	    checksum_matrix
+3.00 ms   0,0 %	3.00 ms	    rand_i32
+
+Weight	Self Weight	Symbol Names
+46.92 s  99,4 %	46.92 s	    matmul
+
+Weight	Self Weight	Symbol Names
+271.00 ms   0,6 %	15.00 ms	    fill_random_matrices
+145.00 ms   0,3 %	145.00 ms	     rand
+111.00 ms   0,2 %	48.00 ms	     rand_i32
+63.00 ms   0,1 %	63.00 ms	      DYLD-STUB$$rand
+
+Weight	Self Weight	Symbol Names
+145.00 ms   0,3 %	145.00 ms	     rand
+
+Weight	Self Weight	Symbol Names
+111.00 ms   0,2 %	48.00 ms	     rand_i32
+63.00 ms   0,1 %	63.00 ms	      DYLD-STUB$$rand
+
+Weight	Self Weight	Symbol Names
+63.00 ms   0,1 %	63.00 ms	      DYLD-STUB$$rand
+
+Weight	Self Weight	Symbol Names
+16.00 ms   0,0 %	16.00 ms	    zero_matrix
+
+Weight	Self Weight	Symbol Names
+6.00 ms   0,0 %	6.00 ms	    checksum_matrix
+
+Weight	Self Weight	Symbol Names
+3.00 ms   0,0 %	3.00 ms	    rand_i32
+
+Weight	Self Weight	Symbol Names
+1.00 ms   0,0 %	0 s	   dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const
+1.00 ms   0,0 %	0 s	    dyld4::prepare(dyld4::APIs&, mach_o::UnsafeHeader const*)
+1.00 ms   0,0 %	0 s	     dyld4::RuntimeState::notifyDtrace(std::__1::span<dyld4::Loader const*, 18446744073709551615ul> const&)
+1.00 ms   0,0 %	0 s	      dyld4::SyscallDelegate::dtraceRegisterUserProbes(dof_ioctl_data*) const
+1.00 ms   0,0 %	1.00 ms	       __open
+
+Weight	Self Weight	Symbol Names
+1.00 ms   0,0 %	0 s	  start
+1.00 ms   0,0 %	1.00 ms	   0x1005fced5

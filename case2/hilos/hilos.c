@@ -120,7 +120,9 @@ static int64_t checksum_matrix(int N, const int32_t *C) {
 // Cada hilo calcula elementos distintos de C, sin condiciones de carrera.
 static void matmul_omp(int N, const int32_t *A, const int32_t *B, int32_t *C) {
 	size_t n = (size_t)N;
-
+  // Paraleliza los bucles externos (i, j) con OpenMP.
+  // Cada hilo calcula un bloque de elementos de C, accediendo a A y B de forma secuencial.
+  // La directiva collapse(2) permite paralelizar ambos bucles (i, j) juntos, lo que mejora la carga de trabajo entre hilos.
 	#pragma omp parallel for collapse(2) schedule(static)
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < N; j++) {

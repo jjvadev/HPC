@@ -1,0 +1,95 @@
+Weight	Self Weight	Symbol Names
+1.19 min  100,0 %	0 s	 matmul_secuencial (71187)
+1.19 min  100,0 %	0 s	  start
+1.19 min  100,0 %	0 s	   main
+1.19 min  99,6 %	1.19 min	    matmul
+279.00 ms   0,4 %	19.00 ms	    fill_random_matrices
+222.00 ms   0,3 %	51.00 ms	     rand_i32
+97.00 ms   0,1 %	97.00 ms	      rand
+74.00 ms   0,1 %	74.00 ms	      DYLD-STUB$$rand
+38.00 ms   0,1 %	38.00 ms	     rand
+14.00 ms   0,0 %	14.00 ms	    zero_matrix
+3.00 ms   0,0 %	3.00 ms	    checksum_matrix
+1.00 ms   0,0 %	1.00 ms	    rand_i32
+1.00 ms   0,0 %	0 s	   dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const
+1.00 ms   0,0 %	0 s	    dyld4::prepare(dyld4::APIs&, mach_o::UnsafeHeader const*)
+1.00 ms   0,0 %	0 s	     dyld4::JustInTimeLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&)
+1.00 ms   0,0 %	0 s	      dyld4::PrebuiltLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&)
+1.00 ms   0,0 %	0 s	       dyld4::PrebuiltLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&)
+1.00 ms   0,0 %	0 s	        dyld4::PrebuiltLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&)
+1.00 ms   0,0 %	0 s	         dyld4::PrebuiltLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&)
+1.00 ms   0,0 %	0 s	          dyld4::PrebuiltLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&)
+1.00 ms   0,0 %	0 s	           dyld4::PrebuiltLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&)
+1.00 ms   0,0 %	0 s	            dyld4::PrebuiltLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&)
+1.00 ms   0,0 %	0 s	             dyld4::PrebuiltLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&)
+1.00 ms   0,0 %	1.00 ms	              dyld4::PrebuiltLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&)
+
+Weight	Self Weight	Symbol Names
+1.19 min  100,0 %	0 s	  start
+1.19 min  100,0 %	0 s	   main
+1.19 min  99,6 %	1.19 min	    matmul
+279.00 ms   0,4 %	19.00 ms	    fill_random_matrices
+222.00 ms   0,3 %	51.00 ms	     rand_i32
+97.00 ms   0,1 %	97.00 ms	      rand
+74.00 ms   0,1 %	74.00 ms	      DYLD-STUB$$rand
+38.00 ms   0,1 %	38.00 ms	     rand
+14.00 ms   0,0 %	14.00 ms	    zero_matrix
+3.00 ms   0,0 %	3.00 ms	    checksum_matrix
+1.00 ms   0,0 %	1.00 ms	    rand_i32
+1.00 ms   0,0 %	0 s	   dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const
+1.00 ms   0,0 %	0 s	    dyld4::prepare(dyld4::APIs&, mach_o::UnsafeHeader const*)
+1.00 ms   0,0 %	0 s	     dyld4::JustInTimeLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&)
+1.00 ms   0,0 %	0 s	      dyld4::PrebuiltLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&)
+1.00 ms   0,0 %	0 s	       dyld4::PrebuiltLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&)
+1.00 ms   0,0 %	0 s	        dyld4::PrebuiltLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&)
+1.00 ms   0,0 %	0 s	         dyld4::PrebuiltLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&)
+1.00 ms   0,0 %	0 s	          dyld4::PrebuiltLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&)
+1.00 ms   0,0 %	0 s	           dyld4::PrebuiltLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&)
+1.00 ms   0,0 %	0 s	            dyld4::PrebuiltLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&)
+1.00 ms   0,0 %	0 s	             dyld4::PrebuiltLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&)
+1.00 ms   0,0 %	1.00 ms	              dyld4::PrebuiltLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&)
+
+Weight	Self Weight	Symbol Names
+1.19 min  100,0 %	0 s	   main
+1.19 min  99,6 %	1.19 min	    matmul
+279.00 ms   0,4 %	19.00 ms	    fill_random_matrices
+222.00 ms   0,3 %	51.00 ms	     rand_i32
+97.00 ms   0,1 %	97.00 ms	      rand
+74.00 ms   0,1 %	74.00 ms	      DYLD-STUB$$rand
+38.00 ms   0,1 %	38.00 ms	     rand
+14.00 ms   0,0 %	14.00 ms	    zero_matrix
+3.00 ms   0,0 %	3.00 ms	    checksum_matrix
+1.00 ms   0,0 %	1.00 ms	    rand_i32
+
+Weight	Self Weight	Symbol Names
+1.19 min  99,6 %	1.19 min	    matmul
+
+Weight	Self Weight	Symbol Names
+279.00 ms   0,4 %	19.00 ms	    fill_random_matrices
+222.00 ms   0,3 %	51.00 ms	     rand_i32
+97.00 ms   0,1 %	97.00 ms	      rand
+74.00 ms   0,1 %	74.00 ms	      DYLD-STUB$$rand
+38.00 ms   0,1 %	38.00 ms	     rand
+
+Weight	Self Weight	Symbol Names
+14.00 ms   0,0 %	14.00 ms	    zero_matrix
+
+Weight	Self Weight	Symbol Names
+3.00 ms   0,0 %	3.00 ms	    checksum_matrix
+
+Weight	Self Weight	Symbol Names
+1.00 ms   0,0 %	1.00 ms	    rand_i32
+
+Weight	Self Weight	Symbol Names
+1.00 ms   0,0 %	0 s	   dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const
+1.00 ms   0,0 %	0 s	    dyld4::prepare(dyld4::APIs&, mach_o::UnsafeHeader const*)
+1.00 ms   0,0 %	0 s	     dyld4::JustInTimeLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&)
+1.00 ms   0,0 %	0 s	      dyld4::PrebuiltLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&)
+1.00 ms   0,0 %	0 s	       dyld4::PrebuiltLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&)
+1.00 ms   0,0 %	0 s	        dyld4::PrebuiltLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&)
+1.00 ms   0,0 %	0 s	         dyld4::PrebuiltLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&)
+1.00 ms   0,0 %	0 s	          dyld4::PrebuiltLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&)
+1.00 ms   0,0 %	0 s	           dyld4::PrebuiltLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&)
+1.00 ms   0,0 %	0 s	            dyld4::PrebuiltLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&)
+1.00 ms   0,0 %	0 s	             dyld4::PrebuiltLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&)
+1.00 ms   0,0 %	1.00 ms	              dyld4::PrebuiltLoader::loadDependents(Diagnostics&, dyld4::RuntimeState&, dyld4::Loader::LoadOptions const&)

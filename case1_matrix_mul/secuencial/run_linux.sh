@@ -2,7 +2,7 @@
 set -euo pipefail
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
-SRC="$DIR/NoHilosCache.c"
+SRC="$DIR/NoHilosCachwe.c"
 BIN="$DIR/NoHilosCache"
 OUT="$DIR/times_secuencia_transpuesta.txt"
 
