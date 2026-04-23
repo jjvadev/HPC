@@ -3,30 +3,35 @@
 DIR="$(cd "$(dirname "$0")" && pwd)"
 SRC="$DIR/hilos.c"
 BIN="$DIR/hilos"
-OUT_DIR="$DIR/output"
-OUT="$OUT_DIR/output_hilos.txt"
+OUT="$DIR/output/output_hilos.txt"
 
-mkdir -p "$OUT_DIR"
 
-# Compilar sin optimizaciones (OpenMP)
-printf "Compilando %s -> %s\n" "$SRC" "$BIN"
-gcc -O0 -std=c11 -Wall -Wextra -fopenmp "$SRC" -o "$BIN"
-printf "Compilacion hecha\n"
+
+#Compilar
+echo "Compilando $SRC -> $BIN"
+gcc -pthread "$SRC" -o "$BIN"
+echo "Compilacion hecha"
+
+
+#Ejecutar benchmarks
 
 # Encabezado
-printf "N trial threads wall_s user_s kernel_s cpu_total_s checksum seed\n" > "$OUT"
+echo "N threads trial wall_s user_s kernel_s cpu_total_s checksum seed" > "$OUT"
 
-printf "Ejecutando benchmarks hilos (OpenMP)...\n"
+echo "Ejecutando benchmarks..."
 
-# 10 rondas para cada tamano y numero de hilos (trials=1 por corrida)
+# 10 rondas para cada tamaño y número de hilos
 for round in {1..10}; do
-    printf "  Ronda %d/10...\n" "$round"
+    echo "  Ronda $round/10..."
     for size in 400 600 800 1000 2000 4000 5500 6000 8000; do
         for threads in 2 4 8 16; do
-            "$BIN" "$size" 1 "$threads" 123456789 >> "$OUT"
+            "$BIN" "$size" "$threads" 1 123456789 >> "$OUT"
         done
     done
 done
 
-printf "Benchmarks completados\n"
-printf "Resultados guardados en: %s\n" "$OUT"
+echo "✓ Benchmarks completados"
+
+echo ""
+echo "Resultados guardados en: $OUT"
+echo ""

@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+DIR="$(cd "$(dirname "$0")" && pwd)"
+SRC="$DIR/NoHilosCache.c"
+BIN="$DIR/NoHilosCache"
+OUT="$DIR/times_secuencia_transpuesta.txt"
+
+if [ ! -f "$SRC" ]; then
+  echo "No se encontro el codigo fuente: $SRC" >&2
+  exit 1
+fi
+
+# Compila solo si hace falta (o si NoHilosCache.c es mas nuevo que el binario).
+if [ ! -x "$BIN" ] || [ "$SRC" -nt "$BIN" ]; then
+  echo "Compilando $SRC -> $BIN"
+  cc "$SRC" -o "$BIN"
+fi
+
+# Encabezado opcional para identificar columnas del programa.
+echo "N threads trial wall_s user_s kernel_s cpu_total_s checksum seed" > "$OUT"
+
+for j in {1..10}; do
+  for i in  400 600 800 1000 2000 4000 5500 6000 8000; do
+    "$BIN" "$i" 1 1 123456789 >> "$OUT"
+  done
+done
+
+echo "Listo: $OUT"
