@@ -1,0 +1,88 @@
+Weight	Self Weight	Symbol Names
+30.92 s  100,0 %	0 s	 o3_signed (13460)
+30.92 s  100,0 %	0 s	  Main Thread (0x54140d)
+30.92 s  100,0 %	0 s	   start
+30.75 s  99,5 %	0 s	    main
+15.64 s  50,6 %	0 s	     process_cpu_seconds
+15.64 s  50,6 %	0 s	      main
+15.64 s  50,6 %	15.64 s	       matmul
+14.98 s  48,5 %	0 s	     zero_matrix
+14.98 s  48,5 %	0 s	      main
+14.98 s  48,5 %	14.98 s	       matmul
+119.00 ms   0,4 %	0 s	     fill_random_matrices
+119.00 ms   0,4 %	0 s	      rand_i32
+74.00 ms   0,2 %	74.00 ms	       DYLD-STUB$$rand
+45.00 ms   0,1 %	0 s	       main
+45.00 ms   0,1 %	16.00 ms	        fill_random_matrices
+29.00 ms   0,1 %	29.00 ms	         rand_i32
+1.00 ms   0,0 %	0 s	     wall_seconds_now
+1.00 ms   0,0 %	0 s	      main
+1.00 ms   0,0 %	1.00 ms	       checksum_matrix
+165.00 ms   0,5 %	165.00 ms	    rand
+2.00 ms   0,0 %	2.00 ms	    __bzero
+1.00 ms   0,0 %	0 s	    dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const
+1.00 ms   0,0 %	0 s	     dyld4::prepare(dyld4::APIs&, mach_o::UnsafeHeader const*)
+1.00 ms   0,0 %	0 s	      dyld4::APIs::runAllInitializersForMain()
+1.00 ms   0,0 %	0 s	       dyld4::PrebuiltLoader::runInitializers(dyld4::RuntimeState&) const
+1.00 ms   0,0 %	0 s	        dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const
+1.00 ms   0,0 %	0 s	         dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void (unsigned int) block_pointer, void const*) const
+1.00 ms   0,0 %	0 s	          mach_o::UnsafeHeader::forEachSection(void (mach_o::UnsafeHeader::SectionInfo const&, bool&) block_pointer) const
+1.00 ms   0,0 %	0 s	           0x18839f093
+1.00 ms   0,0 %	0 s	            invocation function for block in mach_o::UnsafeHeader::forEachSection(void (mach_o::UnsafeHeader::SectionInfo const&, bool&) block_pointer) const
+1.00 ms   0,0 %	0 s	             invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void (unsigned int) block_pointer, void const*) const
+1.00 ms   0,0 %	0 s	              invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const
+1.00 ms   0,0 %	0 s	               libSystem_initializer
+1.00 ms   0,0 %	1.00 ms	                __malloc_init
+1.00 ms   0,0 %	0 s	   0x18833320f
+1.00 ms   0,0 %	0 s	    0x18834d05b
+1.00 ms   0,0 %	0 s	     0x18834da2f
+1.00 ms   0,0 %	0 s	      0x1883a215f
+1.00 ms   0,0 %	0 s	       0x18839f093
+1.00 ms   0,0 %	0 s	        0x1883a23fb
+1.00 ms   0,0 %	0 s	         0x18834f5e7
+1.00 ms   0,0 %	0 s	          0x1883808f3
+1.00 ms   0,0 %	1.00 ms	           <deduplicated_symbol>
+
+Weight	Self Weight	Symbol Names
+30.92 s  100,0 %	0 s	  Main Thread (0x54140d)
+30.92 s  100,0 %	0 s	   start
+30.75 s  99,5 %	0 s	    main
+15.64 s  50,6 %	0 s	     process_cpu_seconds
+15.64 s  50,6 %	0 s	      main
+15.64 s  50,6 %	15.64 s	       matmul
+14.98 s  48,5 %	0 s	     zero_matrix
+14.98 s  48,5 %	0 s	      main
+14.98 s  48,5 %	14.98 s	       matmul
+119.00 ms   0,4 %	0 s	     fill_random_matrices
+119.00 ms   0,4 %	0 s	      rand_i32
+74.00 ms   0,2 %	74.00 ms	       DYLD-STUB$$rand
+45.00 ms   0,1 %	0 s	       main
+45.00 ms   0,1 %	16.00 ms	        fill_random_matrices
+29.00 ms   0,1 %	29.00 ms	         rand_i32
+1.00 ms   0,0 %	0 s	     wall_seconds_now
+1.00 ms   0,0 %	0 s	      main
+1.00 ms   0,0 %	1.00 ms	       checksum_matrix
+165.00 ms   0,5 %	165.00 ms	    rand
+2.00 ms   0,0 %	2.00 ms	    __bzero
+1.00 ms   0,0 %	0 s	    dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const
+1.00 ms   0,0 %	0 s	     dyld4::prepare(dyld4::APIs&, mach_o::UnsafeHeader const*)
+1.00 ms   0,0 %	0 s	      dyld4::APIs::runAllInitializersForMain()
+1.00 ms   0,0 %	0 s	       dyld4::PrebuiltLoader::runInitializers(dyld4::RuntimeState&) const
+1.00 ms   0,0 %	0 s	        dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const
+1.00 ms   0,0 %	0 s	         dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void (unsigned int) block_pointer, void const*) const
+1.00 ms   0,0 %	0 s	          mach_o::UnsafeHeader::forEachSection(void (mach_o::UnsafeHeader::SectionInfo const&, bool&) block_pointer) const
+1.00 ms   0,0 %	0 s	           0x18839f093
+1.00 ms   0,0 %	0 s	            invocation function for block in mach_o::UnsafeHeader::forEachSection(void (mach_o::UnsafeHeader::SectionInfo const&, bool&) block_pointer) const
+1.00 ms   0,0 %	0 s	             invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void (unsigned int) block_pointer, void const*) const
+1.00 ms   0,0 %	0 s	              invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const
+1.00 ms   0,0 %	0 s	               libSystem_initializer
+1.00 ms   0,0 %	1.00 ms	                __malloc_init
+1.00 ms   0,0 %	0 s	   0x18833320f
+1.00 ms   0,0 %	0 s	    0x18834d05b
+1.00 ms   0,0 %	0 s	     0x18834da2f
+1.00 ms   0,0 %	0 s	      0x1883a215f
+1.00 ms   0,0 %	0 s	       0x18839f093
+1.00 ms   0,0 %	0 s	        0x1883a23fb
+1.00 ms   0,0 %	0 s	         0x18834f5e7
+1.00 ms   0,0 %	0 s	          0x1883808f3
+1.00 ms   0,0 %	1.00 ms	           <deduplicated_symbol>

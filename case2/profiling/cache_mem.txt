@@ -1,0 +1,134 @@
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+864.991  100,0 %	737  100,0 %	1.034  100,0 %	 cache_signed (60041)
+864.929  100,0 %	487  66,1 %	1.016  98,3 %	  matmul
+39   0,0 %	0   0,0 %	0   0,0 %	  checksum_matrix
+6   0,0 %	0   0,0 %	0   0,0 %	  DYLD-STUB$$rand
+2   0,0 %	0   0,0 %	0   0,0 %	  DYLD-STUB$$__workq_kernreturn
+1   0,0 %	0   0,0 %	1   0,1 %	  0x1074c185c
+1   0,0 %	0   0,0 %	1   0,1 %	  DYLD-STUB$$__psynch_cvwait
+1   0,0 %	0   0,0 %	0   0,0 %	  0x1074c1adc
+1   0,0 %	0   0,0 %	0   0,0 %	  _xzm_xzone_malloc_tiny
+1   0,0 %	0   0,0 %	0   0,0 %	  0x11ae07300
+1   0,0 %	0   0,0 %	0   0,0 %	  _platform_strncmp$VARIANT$Base
+1   0,0 %	0   0,0 %	0   0,0 %	  objc_autoreleasePoolPop
+1   0,0 %	0   0,0 %	0   0,0 %	  0x18873d4ec
+1   0,0 %	0   0,0 %	0   0,0 %	  _platform_strcmp_noMTE
+1   0,0 %	0   0,0 %	0   0,0 %	  DYLD-STUB$$malloc_type_calloc
+1   0,0 %	0   0,0 %	0   0,0 %	  0x1074c169c
+1   0,0 %	0   0,0 %	0   0,0 %	  0x1074c1920
+1   0,0 %	0   0,0 %	0   0,0 %	  dyld4::Loader::applyFixupsCheckCachePatching(dyld4::RuntimeState&, dyld4::DyldCacheDataConstLazyScopedWriter&) const
+1   0,0 %	0   0,0 %	0   0,0 %	  invocation function for block in mach_o::UnsafeHeader::forEachSection(void (mach_o::UnsafeHeader::SegmentInfo const&, mach_o::UnsafeHeader::SectionInfo const&, bool&) block_pointer) const
+1   0,0 %	0   0,0 %	0   0,0 %	  dataSegmentsContain(objc_class*)
+0   0,0 %	155  21,0 %	3   0,3 %	  fill_random_matrices
+0   0,0 %	88  11,9 %	7   0,7 %	  zero_matrix
+0   0,0 %	2   0,3 %	0   0,0 %	  rand_i32
+0   0,0 %	1   0,1 %	0   0,0 %	  __bzero
+0   0,0 %	1   0,1 %	0   0,0 %	  _xzm_xzone_malloc_small
+0   0,0 %	1   0,1 %	0   0,0 %	  _dispatch_workloop_worker_thread
+0   0,0 %	1   0,1 %	0   0,0 %	  _xzm_initialize_xzone_data
+0   0,0 %	1   0,1 %	0   0,0 %	  rand
+0   0,0 %	0   0,0 %	1   0,1 %	  0x1074c1648
+0   0,0 %	0   0,0 %	1   0,1 %	  object_setClass
+0   0,0 %	0   0,0 %	1   0,1 %	  0x19bd83444
+0   0,0 %	0   0,0 %	1   0,1 %	  0x1074c02e4
+0   0,0 %	0   0,0 %	1   0,1 %	  0x1074c1ac8
+0   0,0 %	0   0,0 %	1   0,1 %	  0x100830540
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+864.929  100,0 %	487  66,1 %	1.016  98,3 %	  matmul
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+39   0,0 %	0   0,0 %	0   0,0 %	  checksum_matrix
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+6   0,0 %	0   0,0 %	0   0,0 %	  DYLD-STUB$$rand
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+2   0,0 %	0   0,0 %	0   0,0 %	  DYLD-STUB$$__workq_kernreturn
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+1   0,0 %	0   0,0 %	1   0,1 %	  0x1074c185c
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+1   0,0 %	0   0,0 %	1   0,1 %	  DYLD-STUB$$__psynch_cvwait
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+1   0,0 %	0   0,0 %	0   0,0 %	  0x1074c1adc
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+1   0,0 %	0   0,0 %	0   0,0 %	  _xzm_xzone_malloc_tiny
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+1   0,0 %	0   0,0 %	0   0,0 %	  0x11ae07300
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+1   0,0 %	0   0,0 %	0   0,0 %	  _platform_strncmp$VARIANT$Base
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+1   0,0 %	0   0,0 %	0   0,0 %	  objc_autoreleasePoolPop
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+1   0,0 %	0   0,0 %	0   0,0 %	  0x18873d4ec
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+1   0,0 %	0   0,0 %	0   0,0 %	  _platform_strcmp_noMTE
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+1   0,0 %	0   0,0 %	0   0,0 %	  DYLD-STUB$$malloc_type_calloc
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+1   0,0 %	0   0,0 %	0   0,0 %	  0x1074c169c
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+1   0,0 %	0   0,0 %	0   0,0 %	  0x1074c1920
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+1   0,0 %	0   0,0 %	0   0,0 %	  dyld4::Loader::applyFixupsCheckCachePatching(dyld4::RuntimeState&, dyld4::DyldCacheDataConstLazyScopedWriter&) const
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+1   0,0 %	0   0,0 %	0   0,0 %	  invocation function for block in mach_o::UnsafeHeader::forEachSection(void (mach_o::UnsafeHeader::SegmentInfo const&, mach_o::UnsafeHeader::SectionInfo const&, bool&) block_pointer) const
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+1   0,0 %	0   0,0 %	0   0,0 %	  dataSegmentsContain(objc_class*)
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+0   0,0 %	155  21,0 %	3   0,3 %	  fill_random_matrices
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+0   0,0 %	88  11,9 %	7   0,7 %	  zero_matrix
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+0   0,0 %	2   0,3 %	0   0,0 %	  rand_i32
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+0   0,0 %	1   0,1 %	0   0,0 %	  __bzero
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+0   0,0 %	1   0,1 %	0   0,0 %	  _xzm_xzone_malloc_small
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+0   0,0 %	1   0,1 %	0   0,0 %	  _dispatch_workloop_worker_thread
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+0   0,0 %	1   0,1 %	0   0,0 %	  _xzm_initialize_xzone_data
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+0   0,0 %	1   0,1 %	0   0,0 %	  rand
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+0   0,0 %	0   0,0 %	1   0,1 %	  0x1074c1648
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+0   0,0 %	0   0,0 %	1   0,1 %	  object_setClass
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+0   0,0 %	0   0,0 %	1   0,1 %	  0x19bd83444
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+0   0,0 %	0   0,0 %	1   0,1 %	  0x1074c02e4
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+0   0,0 %	0   0,0 %	1   0,1 %	  0x1074c1ac8
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+0   0,0 %	0   0,0 %	1   0,1 %	  0x100830540

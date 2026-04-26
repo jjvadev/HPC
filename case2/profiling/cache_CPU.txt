@@ -1,0 +1,95 @@
+Weight	Self Weight	Symbol Names
+47.60 s  100,0 %	0 s	 cache_signed (13110)
+47.60 s  100,0 %	0 s	  Main Thread (0x540a11)
+47.59 s  100,0 %	0 s	   start
+47.59 s  100,0 %	0 s	    main
+47.29 s  99,4 %	47.29 s	     matmul
+274.00 ms   0,6 %	13.00 ms	     fill_random_matrices
+160.00 ms   0,3 %	160.00 ms	      rand
+101.00 ms   0,2 %	47.00 ms	      rand_i32
+54.00 ms   0,1 %	54.00 ms	       DYLD-STUB$$rand
+16.00 ms   0,0 %	16.00 ms	     zero_matrix
+6.00 ms   0,0 %	6.00 ms	     checksum_matrix
+5.00 ms   0,0 %	5.00 ms	     rand_i32
+1.00 ms   0,0 %	0 s	     printf
+1.00 ms   0,0 %	0 s	      vfprintf_l
+1.00 ms   0,0 %	0 s	       __v2printf
+1.00 ms   0,0 %	0 s	        __swsetup
+1.00 ms   0,0 %	0 s	         __smakebuf
+1.00 ms   0,0 %	1.00 ms	          malloc_type_malloc
+1.00 ms   0,0 %	0 s	    dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const
+1.00 ms   0,0 %	0 s	     dyld4::prepare(dyld4::APIs&, mach_o::UnsafeHeader const*)
+1.00 ms   0,0 %	1.00 ms	      __kdebug_trace64
+1.00 ms   0,0 %	0 s	   start
+1.00 ms   0,0 %	1.00 ms	    0x104daced5
+
+Weight	Self Weight	Symbol Names
+47.60 s  100,0 %	0 s	  Main Thread (0x540a11)
+47.59 s  100,0 %	0 s	   start
+47.59 s  100,0 %	0 s	    main
+47.29 s  99,4 %	47.29 s	     matmul
+274.00 ms   0,6 %	13.00 ms	     fill_random_matrices
+160.00 ms   0,3 %	160.00 ms	      rand
+101.00 ms   0,2 %	47.00 ms	      rand_i32
+54.00 ms   0,1 %	54.00 ms	       DYLD-STUB$$rand
+16.00 ms   0,0 %	16.00 ms	     zero_matrix
+6.00 ms   0,0 %	6.00 ms	     checksum_matrix
+5.00 ms   0,0 %	5.00 ms	     rand_i32
+1.00 ms   0,0 %	0 s	     printf
+1.00 ms   0,0 %	0 s	      vfprintf_l
+1.00 ms   0,0 %	0 s	       __v2printf
+1.00 ms   0,0 %	0 s	        __swsetup
+1.00 ms   0,0 %	0 s	         __smakebuf
+1.00 ms   0,0 %	1.00 ms	          malloc_type_malloc
+1.00 ms   0,0 %	0 s	    dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const
+1.00 ms   0,0 %	0 s	     dyld4::prepare(dyld4::APIs&, mach_o::UnsafeHeader const*)
+1.00 ms   0,0 %	1.00 ms	      __kdebug_trace64
+1.00 ms   0,0 %	0 s	   start
+1.00 ms   0,0 %	1.00 ms	    0x104daced5
+
+Weight	Self Weight	Symbol Names
+47.59 s  100,0 %	0 s	   start
+47.59 s  100,0 %	0 s	    main
+47.29 s  99,4 %	47.29 s	     matmul
+274.00 ms   0,6 %	13.00 ms	     fill_random_matrices
+160.00 ms   0,3 %	160.00 ms	      rand
+101.00 ms   0,2 %	47.00 ms	      rand_i32
+54.00 ms   0,1 %	54.00 ms	       DYLD-STUB$$rand
+16.00 ms   0,0 %	16.00 ms	     zero_matrix
+6.00 ms   0,0 %	6.00 ms	     checksum_matrix
+5.00 ms   0,0 %	5.00 ms	     rand_i32
+1.00 ms   0,0 %	0 s	     printf
+1.00 ms   0,0 %	0 s	      vfprintf_l
+1.00 ms   0,0 %	0 s	       __v2printf
+1.00 ms   0,0 %	0 s	        __swsetup
+1.00 ms   0,0 %	0 s	         __smakebuf
+1.00 ms   0,0 %	1.00 ms	          malloc_type_malloc
+1.00 ms   0,0 %	0 s	    dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const
+1.00 ms   0,0 %	0 s	     dyld4::prepare(dyld4::APIs&, mach_o::UnsafeHeader const*)
+1.00 ms   0,0 %	1.00 ms	      __kdebug_trace64
+
+Weight	Self Weight	Symbol Names
+47.59 s  100,0 %	0 s	    main
+47.29 s  99,4 %	47.29 s	     matmul
+274.00 ms   0,6 %	13.00 ms	     fill_random_matrices
+160.00 ms   0,3 %	160.00 ms	      rand
+101.00 ms   0,2 %	47.00 ms	      rand_i32
+54.00 ms   0,1 %	54.00 ms	       DYLD-STUB$$rand
+16.00 ms   0,0 %	16.00 ms	     zero_matrix
+6.00 ms   0,0 %	6.00 ms	     checksum_matrix
+5.00 ms   0,0 %	5.00 ms	     rand_i32
+1.00 ms   0,0 %	0 s	     printf
+1.00 ms   0,0 %	0 s	      vfprintf_l
+1.00 ms   0,0 %	0 s	       __v2printf
+1.00 ms   0,0 %	0 s	        __swsetup
+1.00 ms   0,0 %	0 s	         __smakebuf
+1.00 ms   0,0 %	1.00 ms	          malloc_type_malloc
+
+Weight	Self Weight	Symbol Names
+1.00 ms   0,0 %	0 s	    dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const
+1.00 ms   0,0 %	0 s	     dyld4::prepare(dyld4::APIs&, mach_o::UnsafeHeader const*)
+1.00 ms   0,0 %	1.00 ms	      __kdebug_trace64
+
+Weight	Self Weight	Symbol Names
+1.00 ms   0,0 %	0 s	   start
+1.00 ms   0,0 %	1.00 ms	    0x104daced5

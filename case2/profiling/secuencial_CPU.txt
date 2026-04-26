@@ -1,0 +1,102 @@
+Weight	Self Weight	Symbol Names
+1.23 min  100,0 %	0 s	 secuencial_signed (12452)
+1.23 min  100,0 %	0 s	  start
+1.23 min  100,0 %	0 s	   main
+1.23 min  99,6 %	1.23 min	    matmul
+280.00 ms   0,4 %	15.00 ms	    fill_random_matrices
+259.00 ms   0,4 %	55.00 ms	     rand_i32
+140.00 ms   0,2 %	140.00 ms	      rand
+64.00 ms   0,1 %	64.00 ms	      DYLD-STUB$$rand
+6.00 ms   0,0 %	6.00 ms	     rand
+15.00 ms   0,0 %	15.00 ms	    zero_matrix
+6.00 ms   0,0 %	6.00 ms	    checksum_matrix
+1.00 ms   0,0 %	1.00 ms	    rand_i32
+1.00 ms   0,0 %	0 s	   dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const
+1.00 ms   0,0 %	0 s	    dyld4::prepare(dyld4::APIs&, mach_o::UnsafeHeader const*)
+1.00 ms   0,0 %	0 s	     dyld4::APIs::runAllInitializersForMain()
+1.00 ms   0,0 %	0 s	      dyld4::PrebuiltLoader::runInitializers(dyld4::RuntimeState&) const
+1.00 ms   0,0 %	0 s	       dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const
+1.00 ms   0,0 %	0 s	        dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void (unsigned int) block_pointer, void const*) const
+1.00 ms   0,0 %	0 s	         mach_o::UnsafeHeader::forEachSection(void (mach_o::UnsafeHeader::SectionInfo const&, bool&) block_pointer) const
+1.00 ms   0,0 %	0 s	          mach_o::UnsafeHeader::forEachLoadCommand(void (load_command const*, bool&) block_pointer) const
+1.00 ms   0,0 %	0 s	           invocation function for block in mach_o::UnsafeHeader::forEachSection(void (mach_o::UnsafeHeader::SectionInfo const&, bool&) block_pointer) const
+1.00 ms   0,0 %	0 s	            invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void (unsigned int) block_pointer, void const*) const
+1.00 ms   0,0 %	0 s	             invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const
+1.00 ms   0,0 %	0 s	              libSystem_initializer
+1.00 ms   0,0 %	0 s	               __libkernel_init
+1.00 ms   0,0 %	1.00 ms	                mach_reply_port
+
+Weight	Self Weight	Symbol Names
+1.23 min  100,0 %	0 s	  start
+1.23 min  100,0 %	0 s	   main
+1.23 min  99,6 %	1.23 min	    matmul
+280.00 ms   0,4 %	15.00 ms	    fill_random_matrices
+259.00 ms   0,4 %	55.00 ms	     rand_i32
+140.00 ms   0,2 %	140.00 ms	      rand
+64.00 ms   0,1 %	64.00 ms	      DYLD-STUB$$rand
+6.00 ms   0,0 %	6.00 ms	     rand
+15.00 ms   0,0 %	15.00 ms	    zero_matrix
+6.00 ms   0,0 %	6.00 ms	    checksum_matrix
+1.00 ms   0,0 %	1.00 ms	    rand_i32
+1.00 ms   0,0 %	0 s	   dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const
+1.00 ms   0,0 %	0 s	    dyld4::prepare(dyld4::APIs&, mach_o::UnsafeHeader const*)
+1.00 ms   0,0 %	0 s	     dyld4::APIs::runAllInitializersForMain()
+1.00 ms   0,0 %	0 s	      dyld4::PrebuiltLoader::runInitializers(dyld4::RuntimeState&) const
+1.00 ms   0,0 %	0 s	       dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const
+1.00 ms   0,0 %	0 s	        dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void (unsigned int) block_pointer, void const*) const
+1.00 ms   0,0 %	0 s	         mach_o::UnsafeHeader::forEachSection(void (mach_o::UnsafeHeader::SectionInfo const&, bool&) block_pointer) const
+1.00 ms   0,0 %	0 s	          mach_o::UnsafeHeader::forEachLoadCommand(void (load_command const*, bool&) block_pointer) const
+1.00 ms   0,0 %	0 s	           invocation function for block in mach_o::UnsafeHeader::forEachSection(void (mach_o::UnsafeHeader::SectionInfo const&, bool&) block_pointer) const
+1.00 ms   0,0 %	0 s	            invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void (unsigned int) block_pointer, void const*) const
+1.00 ms   0,0 %	0 s	             invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const
+1.00 ms   0,0 %	0 s	              libSystem_initializer
+1.00 ms   0,0 %	0 s	               __libkernel_init
+1.00 ms   0,0 %	1.00 ms	                mach_reply_port
+
+Weight	Self Weight	Symbol Names
+1.23 min  100,0 %	0 s	   main
+1.23 min  99,6 %	1.23 min	    matmul
+280.00 ms   0,4 %	15.00 ms	    fill_random_matrices
+259.00 ms   0,4 %	55.00 ms	     rand_i32
+140.00 ms   0,2 %	140.00 ms	      rand
+64.00 ms   0,1 %	64.00 ms	      DYLD-STUB$$rand
+6.00 ms   0,0 %	6.00 ms	     rand
+15.00 ms   0,0 %	15.00 ms	    zero_matrix
+6.00 ms   0,0 %	6.00 ms	    checksum_matrix
+1.00 ms   0,0 %	1.00 ms	    rand_i32
+
+Weight	Self Weight	Symbol Names
+1.23 min  99,6 %	1.23 min	    matmul
+
+Weight	Self Weight	Symbol Names
+280.00 ms   0,4 %	15.00 ms	    fill_random_matrices
+259.00 ms   0,4 %	55.00 ms	     rand_i32
+140.00 ms   0,2 %	140.00 ms	      rand
+64.00 ms   0,1 %	64.00 ms	      DYLD-STUB$$rand
+6.00 ms   0,0 %	6.00 ms	     rand
+
+Weight	Self Weight	Symbol Names
+15.00 ms   0,0 %	15.00 ms	    zero_matrix
+
+Weight	Self Weight	Symbol Names
+6.00 ms   0,0 %	6.00 ms	    checksum_matrix
+
+Weight	Self Weight	Symbol Names
+1.00 ms   0,0 %	1.00 ms	    rand_i32
+
+Weight	Self Weight	Symbol Names
+1.00 ms   0,0 %	0 s	   dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const
+1.00 ms   0,0 %	0 s	    dyld4::prepare(dyld4::APIs&, mach_o::UnsafeHeader const*)
+1.00 ms   0,0 %	0 s	     dyld4::APIs::runAllInitializersForMain()
+1.00 ms   0,0 %	0 s	      dyld4::PrebuiltLoader::runInitializers(dyld4::RuntimeState&) const
+1.00 ms   0,0 %	0 s	       dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const
+1.00 ms   0,0 %	0 s	        dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void (unsigned int) block_pointer, void const*) const
+1.00 ms   0,0 %	0 s	         mach_o::UnsafeHeader::forEachSection(void (mach_o::UnsafeHeader::SectionInfo const&, bool&) block_pointer) const
+1.00 ms   0,0 %	0 s	          mach_o::UnsafeHeader::forEachLoadCommand(void (load_command const*, bool&) block_pointer) const
+1.00 ms   0,0 %	0 s	           invocation function for block in mach_o::UnsafeHeader::forEachSection(void (mach_o::UnsafeHeader::SectionInfo const&, bool&) block_pointer) const
+1.00 ms   0,0 %	0 s	            invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void (unsigned int) block_pointer, void const*) const
+1.00 ms   0,0 %	0 s	             invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const
+1.00 ms   0,0 %	0 s	              libSystem_initializer
+1.00 ms   0,0 %	0 s	               __libkernel_init
+1.00 ms   0,0 %	1.00 ms	                mach_reply_port
+

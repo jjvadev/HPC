@@ -1,0 +1,44 @@
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+24.800.922  100,0 %	5.360  100,0 %	24.616.316  100,0 %	 o3_signed (1764)
+24.800.920  100,0 %	5.045  94,1 %	24.616.279  100,0 %	  main
+24.800.801  100,0 %	4.889  91,2 %	24.616.271  100,0 %	   matmul
+118   0,0 %	0   0,0 %	0   0,0 %	   checksum_matrix
+0   0,0 %	156   2,9 %	3   0,0 %	   fill_random_matrices
+1   0,0 %	0   0,0 %	0   0,0 %	  dyld4::PrebuiltLoader::dependent(dyld4::RuntimeState const&, unsigned int, mach_o::LinkedDylibAttributes*) const
+1   0,0 %	0   0,0 %	0   0,0 %	  _xzm_initialize_xzone_data
+0   0,0 %	310   5,8 %	37   0,0 %	  __bzero
+0   0,0 %	1   0,0 %	0   0,0 %	  lsl::Allocator::AllocationMetadata::AllocationMetadata(lsl::Allocator::AllocationMetadata*, unsigned long long, unsigned long long, unsigned long long)
+0   0,0 %	1   0,0 %	0   0,0 %	  xzm_main_malloc_zone_create
+0   0,0 %	1   0,0 %	0   0,0 %	  _platform_memset_pattern16
+0   0,0 %	1   0,0 %	0   0,0 %	  objc_autoreleasePoolPush
+0   0,0 %	1   0,0 %	0   0,0 %	  _xzm_segment_group_segment_span_mark_allocated
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+24.800.920  100,0 %	5.045  94,1 %	24.616.279  100,0 %	  main
+24.800.801  100,0 %	4.889  91,2 %	24.616.271  100,0 %	   matmul
+118   0,0 %	0   0,0 %	0   0,0 %	   checksum_matrix
+0   0,0 %	156   2,9 %	3   0,0 %	   fill_random_matrices
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+1   0,0 %	0   0,0 %	0   0,0 %	  dyld4::PrebuiltLoader::dependent(dyld4::RuntimeState const&, unsigned int, mach_o::LinkedDylibAttributes*) const
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+1   0,0 %	0   0,0 %	0   0,0 %	  _xzm_initialize_xzone_data
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+0   0,0 %	310   5,8 %	37   0,0 %	  __bzero
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+0   0,0 %	1   0,0 %	0   0,0 %	  lsl::Allocator::AllocationMetadata::AllocationMetadata(lsl::Allocator::AllocationMetadata*, unsigned long long, unsigned long long, unsigned long long)
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+0   0,0 %	1   0,0 %	0   0,0 %	  xzm_main_malloc_zone_create
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+0   0,0 %	1   0,0 %	0   0,0 %	  _platform_memset_pattern16
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+0   0,0 %	1   0,0 %	0   0,0 %	  objc_autoreleasePoolPush
+
+L1DC Ld Misses	L1DC St Misses	L1DTLB Misses	Symbol Names
+0   0,0 %	1   0,0 %	0   0,0 %	  _xzm_segment_group_segment_span_mark_allocated
