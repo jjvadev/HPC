@@ -32,10 +32,22 @@ SOURCES: list[tuple[str, Path]] = [
     ("Hilos 4", BASE_DIR / "hilos" / "tables" / "tabla_hilos_4.csv"),
     ("Hilos 8", BASE_DIR / "hilos" / "tables" / "tabla_hilos_8.csv"),
     ("Hilos 16", BASE_DIR / "hilos" / "tables" / "tabla_hilos_16.csv"),
-    ("Procesos 2", BASE_DIR / "procesos" / "tables" / "tabla_procesos_2.csv"),
-    ("Procesos 4", BASE_DIR / "procesos" / "tables" / "tabla_procesos_4.csv"),
-    ("Procesos 8", BASE_DIR / "procesos" / "tables" / "tabla_procesos_8.csv"),
-    ("Procesos 16", BASE_DIR / "procesos" / "tables" / "tabla_procesos_16.csv"),
+    (
+        "Hilos OpenMP 2",
+        BASE_DIR / "hilos_openmp" / "output" / "tabla_hilos_openmp_2.csv",
+    ),
+    (
+        "Hilos OpenMP 4",
+        BASE_DIR / "hilos_openmp" / "output" / "tabla_hilos_openmp_4.csv",
+    ),
+    (
+        "Hilos OpenMP 8",
+        BASE_DIR / "hilos_openmp" / "output" / "tabla_hilos_openmp_8.csv",
+    ),
+    (
+        "Hilos OpenMP 16",
+        BASE_DIR / "hilos_openmp" / "output" / "tabla_hilos_openmp_16.csv",
+    ),
 ]
 
 

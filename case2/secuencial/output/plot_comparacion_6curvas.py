@@ -10,17 +10,20 @@ SECUENCIAL_FILE = BASE_DIR / "times_secuencial.txt"
 SECUENCIAL_TRANSPUESTA_FILE = BASE_DIR / "times_secuencia_transpuesta.txt"
 SECUENCIAL_O3_FILE = BASE_DIR / "times_secuencial_o3.txt"
 HILOS_FILE = BASE_DIR.parent.parent / "hilos" / "output" / "output_hilos.txt"
-PROCESOS_FILE = BASE_DIR.parent.parent / "procesos" / "output" / "output_procesos_8-16.txt"
+HILOS_OPENMP_FILE = BASE_DIR.parent.parent / "hilos_openmp" / "output" / "output_hilos_openmp.txt"
 
-OUTPUT_FIGURE = BASE_DIR / "speedup_comparacion_mem_opt_hilos_procesos.png"
+OUTPUT_FIGURE = BASE_DIR / "speedup_comparacion_mem_opt_hilos_openmp.png"
 TARGET_HILOS = (8, 16)
-TARGET_PROCESOS = (8, 16)
+TARGET_HILOS_OPENMP = (8, 16)
 
 
 def parse_line_generic(parts: list[str], file_name: str, line_number: int) -> tuple[int, int, float]:
     if len(parts) == 9:
         n_value = int(parts[0])
-        workers = int(parts[1])
+        if "openmp" in file_name.lower():
+            workers = int(parts[2])
+        else:
+            workers = int(parts[1])
         wall_s = float(parts[3])
         return n_value, workers, wall_s
 
@@ -98,14 +101,14 @@ def main() -> None:
     secuencial_o3 = load_average_sequential(SECUENCIAL_O3_FILE)
 
     hilos = load_average_filtered(HILOS_FILE, TARGET_HILOS)
-    procesos = load_average_filtered(PROCESOS_FILE, TARGET_PROCESOS)
+    hilos_openmp = load_average_filtered(HILOS_OPENMP_FILE, TARGET_HILOS_OPENMP)
 
     common_sizes = sorted(
         set(secuencial)
         & set(secuencial_transpuesta)
         & set(secuencial_o3)
         & set(hilos)
-        & set(procesos)
+        & set(hilos_openmp)
     )
     if not common_sizes:
         raise ValueError("No hay tamanos N en comun entre todas las series.")
@@ -114,9 +117,9 @@ def main() -> None:
         for workers in TARGET_HILOS:
             if workers not in hilos[n_value]:
                 raise ValueError(f"Faltan datos de hilos={workers} para N={n_value}.")
-        for workers in TARGET_PROCESOS:
-            if workers not in procesos[n_value]:
-                raise ValueError(f"Faltan datos de procesos={workers} para N={n_value}.")
+        for workers in TARGET_HILOS_OPENMP:
+            if workers not in hilos_openmp[n_value]:
+                raise ValueError(f"Faltan datos de hilos OpenMP={workers} para N={n_value}.")
 
     x_positions = np.arange(len(common_sizes))
 
@@ -125,8 +128,12 @@ def main() -> None:
     o3_line = speedup_curve(secuencial, secuencial_o3, common_sizes)
     h8_line = np.array([secuencial[n] / hilos[n][8] for n in common_sizes], dtype=float)
     h16_line = np.array([secuencial[n] / hilos[n][16] for n in common_sizes], dtype=float)
-    p8_line = np.array([secuencial[n] / procesos[n][8] for n in common_sizes], dtype=float)
-    p16_line = np.array([secuencial[n] / procesos[n][16] for n in common_sizes], dtype=float)
+    openmp8_line = np.array(
+        [secuencial[n] / hilos_openmp[n][8] for n in common_sizes], dtype=float
+    )
+    openmp16_line = np.array(
+        [secuencial[n] / hilos_openmp[n][16] for n in common_sizes], dtype=float
+    )
 
     plt.style.use("seaborn-v0_8-whitegrid")
     fig, ax = plt.subplots(figsize=(11, 6.5))
@@ -136,10 +143,10 @@ def main() -> None:
     ax.plot(x_positions, o3_line, marker="o", linewidth=2.0, label="Secuencial O3 (optimizacion)")
     ax.plot(x_positions, h8_line, marker="o", linewidth=2.2, label="Hilos 8")
     ax.plot(x_positions, h16_line, marker="o", linewidth=2.2, label="Hilos 16")
-    ax.plot(x_positions, p8_line, marker="o", linewidth=2.2, label="Procesos 8")
-    ax.plot(x_positions, p16_line, marker="o", linewidth=2.2, label="Procesos 16")
+    ax.plot(x_positions, openmp8_line, marker="o", linewidth=2.2, label="Hilos OpenMP 8")
+    ax.plot(x_positions, openmp16_line, marker="o", linewidth=2.2, label="Hilos OpenMP 16")
 
-    ax.set_title("Comparacion de speedup: memoria, optimizacion, hilos y procesos")
+    ax.set_title("Comparacion de speedup: memoria, optimizacion, hilos y OpenMP")
     ax.set_xlabel("Tamano de matriz (N)")
     ax.set_ylabel("Speedup respecto a secuencial")
     ax.set_xticks(x_positions)
