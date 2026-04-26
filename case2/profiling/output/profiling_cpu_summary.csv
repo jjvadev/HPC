@@ -1,0 +1,4 @@
+variante,ejecutable,cpu_total_s,cpu_matmul_s,cpu_self_matmul_s,porcentaje_cpu_matmul
+Secuencial,secuencial_signed (12452),73.800000,73.800000,73.800000,100.000000
+O3,o3_signed (13460),30.920000,30.620000,30.620000,99.029754
+Transpuesta/cache,cache_signed (13110),47.600000,47.290000,47.290000,99.348739

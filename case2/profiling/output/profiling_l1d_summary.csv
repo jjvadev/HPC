@@ -1,0 +1,4 @@
+variante,ejecutable,total_l1d_load_misses,total_l1d_store_misses,total_l1dtlb_misses,matmul_l1d_load_misses,matmul_l1d_load_pct,matmul_l1d_store_misses,matmul_l1d_store_pct,matmul_l1dtlb_misses,matmul_l1dtlb_pct
+Secuencial,secuencial_signed (55554),24502877,5082,24902131,24502844,100.000000,4859,95.600000,24902122,100.000000
+O3,o3_signed (1764),24800922,5360,24616316,24800801,100.000000,4889,91.200000,24616271,100.000000
+Transpuesta/cache,cache_signed (60041),864991,737,1034,864929,100.000000,487,66.100000,1016,98.300000

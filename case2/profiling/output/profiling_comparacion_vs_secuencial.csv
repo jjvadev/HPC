@@ -1,0 +1,4 @@
+variante,speedup_cpu_total_vs_secuencial,speedup_cpu_matmul_vs_secuencial,reduccion_l1d_load_misses_matmul_pct,reduccion_l1dtlb_misses_matmul_pct
+Secuencial,1.000000,1.000000,0.000000,0.000000
+O3,2.386805,2.410189,-1.216010,1.147898
+Transpuesta/cache,1.550420,1.560584,96.470087,99.995920
