@@ -2,18 +2,25 @@
 
 set -e
 
+
+
 DIR="$(cd "$(dirname "$0")" && pwd)"
 
 BIN_SERIAL="$DIR/traffic_serial_o3"
+
+if [ ! -f "$BIN_SERIAL" ]; then
+    echo "Compilando traffic_serial.c con optimización O3..."
+    gcc -O3 -o "$BIN_SERIAL" "$DIR/traffic_serial.c"
+    echo "✓ Compilado traffic_serial.c con O3"
+else
+    echo "✓ traffic_serial.c ya compilado con O3"
+fi
 
 OUT="$DIR/output/sizes_serial_o3.txt"
 
 echo "version,hilos,N,pasos,densidad,densidad_real,tiempo_s,mceldas_s,velocidad,trial" > "$OUT"
 
-# Compilar traffic_serial_o3.c
-echo "Compilando traffic_serial_o3.c..."
-gcc -O3 -o "$BIN_SERIAL" "$DIR/traffic_serial_o3.c"
-echo "✓ Compilado traffic_serial_o3.c"
+
 
 
 TRIALS=5

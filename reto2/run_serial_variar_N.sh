@@ -5,15 +5,18 @@ set -e
 DIR="$(cd "$(dirname "$0")" && pwd)"
 
 BIN_SERIAL="$DIR/traffic_serial"
+if [ ! -f "$BIN_SERIAL" ]; then
+    echo "Compilando traffic_serial.c..."
+    gcc -o "$BIN_SERIAL" "$DIR/traffic_serial.c"
+    echo "✓ Compilado traffic_serial.c"
+else
+    echo "✓ traffic_serial.c ya compilado"
+fi
 
 OUT="$DIR/output/sizes_serial.txt"
 
 echo "version,hilos,N,pasos,densidad,densidad_real,tiempo_s,mceldas_s,velocidad,trial" > "$OUT"
 
-# Compilar traffic_serial.c
-echo "Compilando traffic_serial.c..."
-gcc -o "$BIN_SERIAL" "$DIR/traffic_serial.c"
-echo "✓ Compilado traffic_serial.c"
 
 
 TRIALS=5

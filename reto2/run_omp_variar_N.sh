@@ -5,15 +5,17 @@ set -e
 DIR="$(cd "$(dirname "$0")" && pwd)"
 
 BIN_OMP="$DIR/traffic_omp"
+if [ ! -f "$BIN_OMP" ]; then
+    echo "Compilando traffic_omp.c..."
+    gcc -fopenmp -o "$BIN_OMP" "$DIR/traffic_omp.c"
+    echo "✓ Compilado traffic_omp.c"
+else
+    echo "✓ traffic_omp.c ya compilado"
+fi
 
 OUT="$DIR/output/sizes_omp.txt"
 
 echo "version,hilos,N,pasos,densidad,densidad_real,tiempo_s,mceldas_s,velocidad,trial" > "$OUT"
-
-# Compilar traffic_omp.c
-echo "Compilando traffic_omp.c..."
-gcc -fopenmp -o "$BIN_OMP" "$DIR/traffic_omp.c"
-echo "✓ Compilado traffic_omp.c"
 
 
 TRIALS=5
