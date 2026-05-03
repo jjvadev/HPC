@@ -1,0 +1,273 @@
+--------------------------------------------------------------------------------
+-- Metadata
+--------------------------------------------------------------------------------
+Invocation:       /usr/bin/cg_annotate --show=Ir,Dr,Dw,D1mr,D1mw,DLmr,DLmw profiling/cachegrind_o3_mem.out
+I1 cache:         32768 B, 64 B, 8-way associative
+D1 cache:         32768 B, 64 B, 8-way associative
+LL cache:         16777216 B, 64 B, direct-mapped
+Command:          ./traffic_serial_o3_val 5000000 1000 0.5
+Events recorded:  Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Events shown:     Ir Dr Dw D1mr D1mw DLmr DLmw
+Event sort order: Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Threshold:        0.1%
+Annotation:       on
+
+--------------------------------------------------------------------------------
+-- Summary
+--------------------------------------------------------------------------------
+Ir_____________________ Dr_____________________ Dw____________________ D1mr________________ D1mw________________ DLmr________________ DLmw________________ 
+
+59,814,075,265 (100.0%) 12,699,558,482 (100.0%) 5,055,020,343 (100.0%) 313,126,551 (100.0%) 312,814,990 (100.0%) 312,753,215 (100.0%) 312,814,964 (100.0%)  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+-- File:function summary
+--------------------------------------------------------------------------------
+  Ir___________________________ Dr___________________________ Dw__________________________ D1mr________________________ D1mw________________________ DLmr________________________ DLmw________________________  file:function
+
+< 59,519,010,680 (99.5%, 99.5%) 12,599,507,299 (99.2%, 99.2%) 5,010,002,030 (99.1%, 99.1%) 313,125,009 (100.0%, 100.0%) 312,814,505 (100.0%, 100.0%) 312,751,882 (100.0%, 100.0%) 312,814,504 (100.0%, 100.0%)  /home/caedmual/Escritorio/Sistemas7/HPC/repo/HPC/reto2/traffic_serial.c:main
+
+<    139,844,922  (0.2%, 99.7%)     40,001,865  (0.3%, 99.5%)    20,000,652  (0.4%, 99.5%)           1   (0.0%, 100.0%)           1   (0.0%, 100.0%)           0   (0.0%, 100.0%)           1   (0.0%, 100.0%)  ./stdlib/./stdlib/random_r.c:
+     139,838,710  (0.2%)            40,000,000  (0.3%)           20,000,000  (0.4%)                  0                            0                            0                            0                     random_r
+
+<    115,000,020  (0.2%, 99.9%)     45,000,006  (0.4%, 99.9%)    15,000,003  (0.3%, 99.8%)           1   (0.0%, 100.0%)           0   (0.0%, 100.0%)           1   (0.0%, 100.0%)           0   (0.0%, 100.0%)  ./stdlib/./stdlib/random.c:
+     115,000,000  (0.2%)            45,000,000  (0.4%)           15,000,000  (0.3%)                  0                            0                            0                            0                     random
+
+--------------------------------------------------------------------------------
+-- Function:file summary
+--------------------------------------------------------------------------------
+  Ir___________________________ Dr___________________________ Dw__________________________ D1mr________________________ D1mw________________________ DLmr________________________ DLmw________________________  function:file
+
+> 59,519,010,788 (99.5%, 99.5%) 12,599,507,313 (99.2%, 99.2%) 5,010,002,059 (99.1%, 99.1%) 313,125,009 (100.0%, 100.0%) 312,814,510 (100.0%, 100.0%) 312,751,882 (100.0%, 100.0%) 312,814,507 (100.0%, 100.0%)  main:
+  59,519,010,680 (99.5%)        12,599,507,299 (99.2%)        5,010,002,030 (99.1%)        313,125,009 (100.0%)         312,814,505 (100.0%)         312,751,882 (100.0%)         312,814,504 (100.0%)            /home/caedmual/Escritorio/Sistemas7/HPC/repo/HPC/reto2/traffic_serial.c
+
+>    139,838,710  (0.2%, 99.7%)     40,000,000  (0.3%, 99.5%)    20,000,000  (0.4%, 99.5%)           0   (0.0%, 100.0%)           0   (0.0%, 100.0%)           0   (0.0%, 100.0%)           0   (0.0%, 100.0%)  random_r:./stdlib/./stdlib/random_r.c
+
+>    115,000,000  (0.2%, 99.9%)     45,000,000  (0.4%, 99.9%)    15,000,000  (0.3%, 99.8%)           0   (0.0%, 100.0%)           0   (0.0%, 100.0%)           0   (0.0%, 100.0%)           0   (0.0%, 100.0%)  random:./stdlib/./stdlib/random.c
+
+--------------------------------------------------------------------------------
+-- Annotated source file: ./stdlib/./stdlib/random.c
+--------------------------------------------------------------------------------
+Unannotated because one or more of these original files are unreadable:
+- ./stdlib/./stdlib/random.c
+
+--------------------------------------------------------------------------------
+-- Annotated source file: ./stdlib/./stdlib/random_r.c
+--------------------------------------------------------------------------------
+Unannotated because one or more of these original files are unreadable:
+- ./stdlib/./stdlib/random_r.c
+
+--------------------------------------------------------------------------------
+-- Annotated source file: /home/caedmual/Escritorio/Sistemas7/HPC/repo/HPC/reto2/traffic_serial.c
+--------------------------------------------------------------------------------
+Ir____________________ Dr___________________ Dw___________________ D1mr_______________ D1mw_______________ DLmr_______________ DLmw_______________ 
+
+-- line 26 ----------------------------------------
+             .                     .                     .                   .                   .                   .                   .          #include <string.h>
+             .                     .                     .                   .                   .                   .                   .          #include <time.h>
+             .                     .                     .                   .                   .                   .                   .          
+             .                     .                     .                   .                   .                   .                   .          /* ----------------------------------------------------------------
+             .                     .                     .                   .                   .                   .                   .           * Retorna tiempo actual en segundos (alta resolucion)
+             .                     .                     .                   .                   .                   .                   .           * ---------------------------------------------------------------- */
+             .                     .                     .                   .                   .                   .                   .          static double wall_time(void) {
+             .                     .                     .                   .                   .                   .                   .              struct timespec ts;
+            10  (0.0%)             1  (0.0%)             4  (0.0%)           1  (0.0%)           1  (0.0%)           1  (0.0%)           1  (0.0%)      clock_gettime(CLOCK_MONOTONIC, &ts);
+            18  (0.0%)            10  (0.0%)             1  (0.0%)           3  (0.0%)           0                   3  (0.0%)           0              return ts.tv_sec + ts.tv_nsec * 1e-9;
+             .                     .                     .                   .                   .                   .                   .          }
+             .                     .                     .                   .                   .                   .                   .          
+             .                     .                     .                   .                   .                   .                   .          /* ----------------------------------------------------------------
+             .                     .                     .                   .                   .                   .                   .           * Inicializar carretera con densidad dada
+             .                     .                     .                   .                   .                   .                   .           * ---------------------------------------------------------------- */
+             .                     .                     .                   .                   .                   .                   .          static void init_road(int *road, int N, double density) {
+    15,000,003  (0.0%)             0                     0                   0                   0                   0                   0              for (int i = 1; i <= N; i++) {
+    20,000,000  (0.0%)     5,000,000  (0.0%)     5,000,000  (0.1%)           0                   0                   0                   0                  double r = (double)rand() / ((double)RAND_MAX + 1.0);
+    15,000,000  (0.0%)     5,000,000  (0.0%)             0                   0                   0                   0                   0                  if (r < density){
+     5,000,000  (0.0%)             0             5,000,000  (0.1%)           0             312,500  (0.1%)           0             312,500  (0.1%)              road[i] = 1;
+             .                     .                     .                   .                   .                   .                   .                  } else {
+             .                     .                     .                   .                   .                   .                   .                      road[i] = 0;
+             .                     .                     .                   .                   .                   .                   .                  }
+             .                     .                     .                   .                   .                   .                   .              }
+             3  (0.0%)             1  (0.0%)             1  (0.0%)           0                   1  (0.0%)           0                   1  (0.0%)      road[0]   = road[N];
+             8  (0.0%)             1  (0.0%)             1  (0.0%)           0                   0                   0                   0              road[N+1] = road[1];
+             .                     .                     .                   .                   .                   .                   .          }
+             .                     .                     .                   .                   .                   .                   .          
+             .                     .                     .                   .                   .                   .                   .          
+             .                     .                     .                   .                   .                   .                   .          /* ----------------------------------------------------------------
+             .                     .                     .                   .                   .                   .                   .           * Contar autos totales
+             .                     .                     .                   .                   .                   .                   .           * ---------------------------------------------------------------- */
+             .                     .                     .                   .                   .                   .                   .          static int count_cars(const int *road, int N) {
+             .                     .                     .                   .                   .                   .                   .              int total = 0;
+   467,463,623  (0.8%)             3  (0.0%)             1  (0.0%)           0                   0                   0                   0              for (int i = 1; i <= N; i++) {
+     7,500,000  (0.0%)     2,500,000  (0.0%)             0             625,000  (0.2%)           0             251,884  (0.1%)           0                  total += road[i];
+             .                     .                     .                   .                   .                   .                   .              }
+             .                     .                     .                   .                   .                   .                   .              return total;
+             .                     .                     .                   .                   .                   .                   .          }
+             .                     .                     .                   .                   .                   .                   .          
+             .                     .                     .                   .                   .                   .                   .          /* ----------------------------------------------------------------
+             .                     .                     .                   .                   .                   .                   .           * Un paso de tiempo: aplica reglas y retorna autos que se movieron
+             .                     .                     .                   .                   .                   .                   .           reglas:
+             .                     .                     .                   .                   .                   .                   .           * - Si hay carro y adelante está libre, avanza.
+             .                     .                     .                   .                   .                   .                   .           * - Si hay carro y adelante está ocupado, se queda.
+             .                     .                     .                   .                   .                   .                   .           * - Si una celda está vacía y atrás había carro, el carro llega.
+             .                     .                     .                   .                   .                   .                   .           * 
+             .                     .                     .                   .                   .                   .                   .           * retorna el número de autos que se movieron (para calcular velocidad)
+             .                     .                     .                   .                   .                   .                   .           * ---------------------------------------------------------------- */
+             .                     .                     .                   .                   .                   .                   .          static int update_road(const int *old, int *new_road, int N) {
+         1,600  (0.0%)             0                     0                   0                   0                   0                   0              int moved = 0;
+             .                     .                     .                   .                   .                   .                   .          
+             .                     .                     .                   .                   .                   .                   .              
+15,000,000,000 (25.1%)             0                     0                   0                   0                   0                   0              for (int i = 1; i <= N; i++) {
+ 5,000,000,000  (8.4%) 5,000,000,000 (39.4%)             0                   0                   0                   0                   0                  int curr = old[i];
+             .                     .                     .                   .                   .                   .                   .                  int right = old[i+1];
+             .                     .                     .                   .                   .                   .                   .                  int left = old[i-1];
+19,999,999,998 (33.4%) 5,000,000,000 (39.4%)             0         312,500,001 (99.8%)           0         312,499,990 (99.9%)           0                  if (curr == 1 && right == 0) {
+ 5,000,000,000  (8.4%)             0         5,000,000,000 (98.9%)           0         312,501,000 (99.9%)           0         312,501,000 (99.9%)              new_road[i] = 0;  // auto avanza
+ 3,901,063,098  (6.5%)             0                     0                   0                   0                   0                   0                      moved++;
+10,087,964,422 (16.9%) 2,587,005,264 (20.4%)             1  (0.0%)           0                   0                   0                   0                  } else if (curr == 0 && left == 1) {
+             .                     .                     .                   .                   .                   .                   .                      new_road[i] = 1;  // auto llega
+             .                     .                     .                   .                   .                   .                   .                  } else {
+             .                     .                     .                   .                   .                   .                   .                      new_road[i] = curr; // se queda igual
+             .                     .                     .                   .                   .                   .                   .                  }
+             .                     .                     .                   .                   .                   .                   .              }
+             .                     .                     .                   .                   .                   .                   .              
+         2,000  (0.0%)         1,000  (0.0%)         1,000  (0.0%)           0               1,000  (0.0%)           0               1,000  (0.0%)      new_road[0]   = new_road[N];
+         2,000  (0.0%)         1,000  (0.0%)         1,000  (0.0%)           0                   0                   0                   0              new_road[N+1] = new_road[1];
+             .                     .                     .                   .                   .                   .                   .              return moved;
+             .                     .                     .                   .                   .                   .                   .          }
+             .                     .                     .                   .                   .                   .                   .          
+             .                     .                     .                   .                   .                   .                   .          /* ----------------------------------------------------------------
+             .                     .                     .                   .                   .                   .                   .           * Validadr parametros de entrada
+             .                     .                     .                   .                   .                   .                   .           * ---------------------------------------------------------------- */
+             .                     .                     .                   .                   .                   .                   .          
+             .                     .                     .                   .                   .                   .                   .          static int validate_params(int N, int pasos, double density) {
+             2  (0.0%)             0                     0                   0                   0                   0                   0              if (N <= 0) {
+             .                     .                     .                   .                   .                   .                   .                  fprintf(stderr, "Error: N debe ser > 0\n");
+             .                     .                     .                   .                   .                   .                   .                  return 0;
+             .                     .                     .                   .                   .                   .                   .              }
+             2  (0.0%)             0                     0                   0                   0                   0                   0              if (pasos <= 0) {
+             .                     .                     .                   .                   .                   .                   .                  fprintf(stderr, "Error: pasos debe ser > 0\n");
+             .                     .                     .                   .                   .                   .                   .                  return 0;
+             .                     .                     .                   .                   .                   .                   .              }
+             6  (0.0%)             1  (0.0%)             0                   1  (0.0%)           0                   1  (0.0%)           0              if (density < 0.0 || density > 1.0) {
+             .                     .                     .                   .                   .                   .                   .                  fprintf(stderr, "Error: densidad debe estar entre 0.0 y 1.0\n");
+             .                     .                     .                   .                   .                   .                   .                  return 0;
+             .                     .                     .                   .                   .                   .                   .              }
+             .                     .                     .                   .                   .                   .                   .              return 1;
+             .                     .                     .                   .                   .                   .                   .          }
+             .                     .                     .                   .                   .                   .                   .          
+             .                     .                     .                   .                   .                   .                   .          /* ================================================================
+             .                     .                     .                   .                   .                   .                   .           * MAIN
+             .                     .                     .                   .                   .                   .                   .           * ================================================================ */
+            11  (0.0%)             1  (0.0%)             7  (0.0%)           0                   1  (0.0%)           0                   0          int main(int argc, char *argv[]) {
+             .                     .                     .                   .                   .                   .                   .          
+             .                     .                     .                   .                   .                   .                   .              /* --- Parametros --- */
+             2  (0.0%)             0                     0                   0                   0                   0                   0              int    N       = (argc >= 2) ? atoi(argv[1]) : 5000;
+             2  (0.0%)             0                     0                   0                   0                   0                   0              int    pasos   = (argc >= 3) ? atoi(argv[2]) : 1000;
+             2  (0.0%)             0                     0                   0                   0                   0                   0              double density = (argc >= 4) ? atof(argv[3]) : 0.5;
+             .                     .                     .                   .                   .                   .                   .              
+             .                     .                     .                   .                   .                   .                   .              if (!validate_params(N, pasos, density)) {
+             .                     .                     .                   .                   .                   .                   .                  fprintf(stderr, "Uso: %s <N> <pasos> <densidad>\n", argv[0]);
+             .                     .                     .                   .                   .                   .                   .                  return 1;
+             .                     .                     .                   .                   .                   .                   .              }
+             5  (0.0%)             0                     0                   0                   0                   0                   0              int    warmup  = pasos / 5;   /* 20% de pasos como calentamiento */
+             .                     .                     .                   .                   .                   .                   .          
+             2  (0.0%)             0                     1  (0.0%)           0                   0                   0                   0              srand(42);   /* semilla fija para reproducibilidad */
+             .                     .                     .                   .                   .                   .                   .          
+             .                     .                     .                   .                   .                   .                   .              /* --- Reservar memoria --- */
+             6  (0.0%)             0                     1  (0.0%)           0                   0                   0                   0              int *road_a = (int *)malloc((N + 2) * sizeof(int));
+             3  (0.0%)             0                     2  (0.0%)           0                   0                   0                   0              int *road_b = (int *)malloc((N + 2) * sizeof(int));
+             .                     .                     .                   .                   .                   .                   .          
+             6  (0.0%)             0                     0                   0                   0                   0                   0              if (road_a == NULL || road_b == NULL) {
+             .                     .                     .                   .                   .                   .                   .                  fprintf(stderr, "Error: No se pudo reservar memoria\n");
+             .                     .                     .                   .                   .                   .                   .                  free(road_a);
+             .                     .                     .                   .                   .                   .                   .                  free(road_b);
+             .                     .                     .                   .                   .                   .                   .                  return 1;
+             .                     .                     .                   .                   .                   .                   .              }
+             .                     .                     .                   .                   .                   .                   .          
+             .                     .                     .                   .                   .                   .                   .              /* --- Inicializar --- */
+             .                     .                     .                   .                   .                   .                   .              init_road(road_a, N, density);
+             .                     .                     .                   .                   .                   .                   .          
+             .                     .                     .                   .                   .                   .                   .              // Contar autos iniciales y densidad real
+             .                     .                     .                   .                   .                   .                   .              int ncars = count_cars(road_a, N);
+            11  (0.0%)             0                     5  (0.0%)           0                   2  (0.0%)           0                   2  (0.0%)      double real_density = (double)ncars / N;
+             .                     .                     .                   .                   .                   .                   .          
+             .                     .                     .                   .                   .                   .                   .              printf("================================================\n");
+             .                     .                     .                   .                   .                   .                   .              printf("  Cellular Automaton - Trafico [SERIAL]\n");
+             .                     .                     .                   .                   .                   .                   .              printf("================================================\n");
+             .                     .                     .                   .                   .                   .                   .              printf("  N              : %d\n", N);
+             .                     .                     .                   .                   .                   .                   .              printf("  Pasos          : %d\n", pasos);
+             .                     .                     .                   .                   .                   .                   .              printf("  Densidad dada  : %.4f\n", density);
+             .                     .                     .                   .                   .                   .                   .              printf("  Autos iniciales: %d\n", ncars);
+-- line 160 ----------------------------------------
+-- line 161 ----------------------------------------
+             .                     .                     .                   .                   .                   .                   .              printf("  Densidad real  : %.4f\n", real_density);
+             .                     .                     .                   .                   .                   .                   .              printf("  Warmup         : %d pasos\n", warmup);
+             .                     .                     .                   .                   .                   .                   .              printf("------------------------------------------------\n");
+             .                     .                     .                   .                   .                   .                   .          
+             .                     .                     .                   .                   .                   .                   .              /* ============================================================
+             .                     .                     .                   .                   .                   .                   .               * INICIO MEDICION WALL TIME
+             .                     .                     .                   .                   .                   .                   .               * ============================================================ */
+             .                     .                     .                   .                   .                   .                   .              
+             3  (0.0%)             0                     0                   0                   0                   0                   0              int *old   = road_a;
+             2  (0.0%)             1  (0.0%)             0                   0                   0                   0                   0              int *new_road = road_b;
+             .                     .                     .                   .                   .                   .                   .              
+         3,997  (0.0%)             0                     0                   0                   0                   0                   0              double suma_vel  = 0.0;
+             1  (0.0%)             0                     0                   0                   0                   0                   0              int    n_medidas = 0;
+             .                     .                     .                   .                   .                   .                   .              
+             .                     .                     .                   .                   .                   .                   .              double t_inicio = wall_time();
+             .                     .                     .                   .                   .                   .                   .          
+         3,005  (0.0%)             1  (0.0%)             0                   1  (0.0%)           0                   1  (0.0%)           0              for (int t = 0; t < pasos; t++) {
+             .                     .                     .                   .                   .                   .                   .                  int moved = update_road(old, new_road, N);
+             .                     .                     .                   .                   .                   .                   .          
+             .                     .                     .                   .                   .                   .                   .                  /* Intercambio de punteros (evita memcpy O(N) en cada paso) */
+             .                     .                     .                   .                   .                   .                   .                  int *tmp = old; 
+             .                     .                     .                   .                   .                   .                   .                  old = new_road; 
+             .                     .                     .                   .                   .                   .                   .                  new_road = tmp;
+             .                     .                     .                   .                   .                   .                   .          
+             .                     .                     .                   .                   .                   .                   .                  /* Acumular velocidad solo despues del warmup */
+             .                     .                     .                   .                   .                   .                   .                  if (t >= warmup) {
+         4,800  (0.0%)             0                     0                   0                   0                   0                   0                      double velocity = (ncars > 0) ? (double)moved / ncars : 0.0;
+           802  (0.0%)             0                     1  (0.0%)           0                   0                   0                   0                      suma_vel += velocity;
+           800  (0.0%)             0                     0                   0                   0                   0                   0                      n_medidas++;
+             .                     .                     .                   .                   .                   .                   .                  }
+             .                     .                     .                   .                   .                   .                   .              }
+             .                     .                     .                   .                   .                   .                   .          
+             .                     .                     .                   .                   .                   .                   .              double t_fin = wall_time();
+             .                     .                     .                   .                   .                   .                   .              /* ============================================================
+             .                     .                     .                   .                   .                   .                   .               * FIN MEDICION WALL TIME
+             .                     .                     .                   .                   .                   .                   .               * ============================================================ */
+             .                     .                     .                   .                   .                   .                   .          
+             2  (0.0%)             1  (0.0%)             1  (0.0%)           0                   0                   0                   0              double wall_s        = t_fin - t_inicio;
+             4  (0.0%)             1  (0.0%)             0                   0                   0                   0                   0              double vel_promedio  = (n_medidas > 0) ? suma_vel / n_medidas : 0.0;
+             6  (0.0%)             3  (0.0%)             1  (0.0%)           0                   0                   0                   0              double mcells_per_s  = (double)N * pasos / wall_s / 1.0e6;
+             .                     .                     .                   .                   .                   .                   .          
+             .                     .                     .                   .                   .                   .                   .              printf("\n  -- RESULTADOS --\n");
+             .                     .                     .                   .                   .                   .                   .              printf("  Wall time          : %.6f s\n", wall_s);
+             .                     .                     .                   .                   .                   .                   .              printf("  Rendimiento        : %.2f MCeldas/s\n", mcells_per_s);
+             .                     .                     .                   .                   .                   .                   .              printf("  Velocidad promedio : %.6f\n", vel_promedio);
+             .                     .                     .                   .                   .                   .                   .              printf("  Carros finales     : %d\n", count_cars(old, N));
+             .                     .                     .                   .                   .                   .                   .              printf("================================================\n");
+             .                     .                     .                   .                   .                   .                   .          
+             .                     .                     .                   .                   .                   .                   .              printf("\nCSV:\n");
+             .                     .                     .                   .                   .                   .                   .              printf("version,hilos,N,pasos,densidad,densidad_real,tiempo_s,mceldas_s,velocidad\n");
+             .                     .                     .                   .                   .                   .                   .              printf("serial,1,%d,%d,%.4f,%.4f,%.6f,%.2f,%.6f\n",
+             .                     .                     .                   .                   .                   .                   .                 N, pasos, density, real_density,
+             .                     .                     .                   .                   .                   .                   .                     wall_s, mcells_per_s, vel_promedio);
+             .                     .                     .                   .                   .                   .                   .          
+             .                     .                     .                   .                   .                   .                   .          
+             2  (0.0%)             0                     1  (0.0%)           0                   0                   0                   0              free(road_a);
+             2  (0.0%)             1  (0.0%)             1  (0.0%)           0                   0                   0                   0              free(road_b);
+             1  (0.0%)             0                     0                   0                   0                   0                   0              return 0;
+           410  (0.0%)             9  (0.0%)             0                   2  (0.0%)           0                   2  (0.0%)           0          }
+
+--------------------------------------------------------------------------------
+-- Annotation summary
+--------------------------------------------------------------------------------
+Ir____________________ Dr____________________ Dw___________________ D1mr________________ D1mw________________ DLmr________________ DLmw________________ 
+
+59,519,010,680 (99.5%) 12,599,507,299 (99.2%) 5,010,002,030 (99.1%) 313,125,009 (100.0%) 312,814,505 (100.0%) 312,751,882 (100.0%) 312,814,504 (100.0%)    annotated: files known & above threshold & readable, line numbers known
+             0                      0                     0                   0                    0                    0                    0             annotated: files known & above threshold & readable, line numbers unknown
+             0                      0                     0                   0                    0                    0                    0           unannotated: files known & above threshold & two or more non-identical
+   254,844,942  (0.4%)     85,001,871  (0.7%)    35,000,655  (0.7%)           2   (0.0%)           1   (0.0%)           1   (0.0%)           1   (0.0%)  unannotated: files known & above threshold & unreadable 
+    30,219,178  (0.1%)     10,049,113  (0.1%)    10,017,644  (0.2%)       1,518   (0.0%)         483   (0.0%)       1,311   (0.0%)         458   (0.0%)  unannotated: files known & below threshold
+    10,000,465  (0.0%)      5,000,199  (0.0%)            14  (0.0%)          22   (0.0%)           1   (0.0%)          21   (0.0%)           1   (0.0%)  unannotated: files unknown
+
