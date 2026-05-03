@@ -1,0 +1,12 @@
+version,funcion,porcentaje_tiempo,segundos_propios,llamadas,ms_por_llamada
+Serial O0,update_road,99.58,122.14,1000,122.14
+Serial O3,update_road,99.11,33.43,1000,33.43
+Serial O0,init_road,0.34,0.42,1,420.0
+Serial O3,init_road,0.8,0.27,1,270.0
+Serial O0,count_cars,0.07,0.09,2,45.0
+Serial O3,_init,0.06,0.02,,
+Serial O3,count_cars,0.03,0.01,2,5.0
+Serial O0,wall_time,0.0,0.0,2,0.0
+Serial O0,validate_params,0.0,0.0,1,0.0
+Serial O3,wall_time,0.0,0.0,2,0.0
+Serial O3,validate_params,0.0,0.0,1,0.0

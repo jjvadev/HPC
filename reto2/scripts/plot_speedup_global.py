@@ -14,7 +14,7 @@ from traffic_plot_utils import (
     load_serial_times,
     save_figure,
     size_labels,
-    write_csv,
+    write_table_artifacts,
 )
 from traffic_plot_utils import load_serial_times as load_times
 import matplotlib.pyplot as plt
@@ -79,8 +79,21 @@ def main() -> None:
     fields = ["N", "speedup_serial_o0", "speedup_o3"]
     fields.extend([f"speedup_openmp_{threads}" for threads in THREAD_COUNTS])
     out_csv = TABLES_DIR / "traffic_speedup_global.csv"
-    write_csv(out_csv, table_rows, fields)
-    print(f"Tabla guardada: {out_csv}")
+    labels = {
+        "N": "N",
+        "speedup_serial_o0": "Serial O0",
+        "speedup_o3": "Serial O3",
+    }
+    for threads in THREAD_COUNTS:
+        labels[f"speedup_openmp_{threads}"] = f"OpenMP {threads}"
+    write_table_artifacts(
+        out_csv,
+        TABLES_DIR / "traffic_speedup_global.png",
+        table_rows,
+        fields,
+        "Comparacion global de speedup",
+        labels,
+    )
 
 
 if __name__ == "__main__":

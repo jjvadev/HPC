@@ -15,7 +15,7 @@ from traffic_plot_utils import (
     ensure_dirs,
     save_figure,
     size_labels,
-    write_csv,
+    write_table_artifacts,
 )
 import matplotlib.pyplot as plt
 
@@ -100,26 +100,34 @@ def main() -> None:
             "N": n,
             "serial_tiempo_s": serial_time[n],
             "o3_tiempo_s": o3_time[n],
-            "serial_mceldas_s": serial_rate[n],
-            "o3_mceldas_s": o3_rate[n],
         }
         for threads in THREAD_COUNTS:
             row[f"openmp_{threads}_tiempo_s"] = omp_time[n].get(threads, "")
-            row[f"openmp_{threads}_mceldas_s"] = omp_rate[n].get(threads, "")
         table_rows.append(row)
 
     fields = [
         "N",
         "serial_tiempo_s",
         "o3_tiempo_s",
-        "serial_mceldas_s",
-        "o3_mceldas_s",
     ]
     for threads in THREAD_COUNTS:
-        fields.extend([f"openmp_{threads}_tiempo_s", f"openmp_{threads}_mceldas_s"])
+        fields.append(f"openmp_{threads}_tiempo_s")
     out_csv = TABLES_DIR / "traffic_size_performance_summary.csv"
-    write_csv(out_csv, table_rows, fields)
-    print(f"Tabla guardada: {out_csv}")
+    labels = {
+        "N": "N",
+        "serial_tiempo_s": "Serial O0 (s)",
+        "o3_tiempo_s": "Serial O3 (s)",
+    }
+    for threads in THREAD_COUNTS:
+        labels[f"openmp_{threads}_tiempo_s"] = f"OMP {threads} (s)"
+    write_table_artifacts(
+        out_csv,
+        TABLES_DIR / "traffic_size_performance_summary.png",
+        table_rows,
+        fields,
+        "Resumen de rendimiento por tamano",
+        labels,
+    )
 
 
 if __name__ == "__main__":

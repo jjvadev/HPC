@@ -12,7 +12,7 @@ from traffic_plot_utils import (
     load_serial_times,
     save_figure,
     size_labels,
-    write_csv,
+    write_table_artifacts,
 )
 from traffic_plot_utils import load_serial_times as load_times
 import matplotlib.pyplot as plt
@@ -59,8 +59,19 @@ def main() -> None:
         for n in sizes
     ]
     out_csv = TABLES_DIR / "traffic_speedup_o3.csv"
-    write_csv(out_csv, rows, ["N", "tiempo_serial_s", "tiempo_o3_s", "speedup_o3"])
-    print(f"Tabla guardada: {out_csv}")
+    write_table_artifacts(
+        out_csv,
+        TABLES_DIR / "traffic_speedup_o3.png",
+        rows,
+        ["N", "tiempo_serial_s", "tiempo_o3_s", "speedup_o3"],
+        "Speedup O3",
+        {
+            "N": "N",
+            "tiempo_serial_s": "Serial O0 (s)",
+            "tiempo_o3_s": "Serial O3 (s)",
+            "speedup_o3": "Speedup O3",
+        },
+    )
 
 
 if __name__ == "__main__":

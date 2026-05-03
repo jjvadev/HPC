@@ -102,6 +102,87 @@ def write_csv(path: Path, rows: list[dict[str, float]], fieldnames: list[str]) -
             writer.writerow({key: row.get(key, "") for key in fieldnames})
 
 
+def format_cell(value) -> str:
+    if value == "" or value is None:
+        return "-"
+    if isinstance(value, int):
+        return f"{value:,}".replace(",", ".")
+    if isinstance(value, float):
+        abs_value = abs(value)
+        if abs_value >= 1000:
+            return f"{value:,.2f}".replace(",", ".")
+        if abs_value >= 100:
+            return f"{value:.2f}"
+        if abs_value >= 10:
+            return f"{value:.3f}"
+        return f"{value:.4f}"
+    return str(value)
+
+
+def render_table_png(
+    path: Path,
+    rows: list[dict[str, float]],
+    columns: list[tuple[str, str]],
+    title: str,
+) -> None:
+    if not rows:
+        raise ValueError(f"No hay filas para generar la tabla: {title}")
+
+    labels = [label for _, label in columns]
+    values = [[format_cell(row.get(key, "")) for key, _ in columns] for row in rows]
+
+    width = max(10.0, min(22.0, 1.55 * len(columns)))
+    height = max(2.8, 0.55 * len(rows) + 1.6)
+    fig, ax = plt.subplots(figsize=(width, height))
+    ax.axis("off")
+    ax.set_title(title, fontsize=14, fontweight="bold", pad=12)
+
+    table = ax.table(
+        cellText=values,
+        colLabels=labels,
+        cellLoc="center",
+        colLoc="center",
+        loc="center",
+    )
+    table.auto_set_font_size(False)
+    table.set_fontsize(9)
+    table.scale(1.0, 1.35)
+
+    for (row_idx, _), cell in table.get_celld().items():
+        cell.set_edgecolor("#dddddd")
+        if row_idx == 0:
+            cell.set_facecolor("#2f3b52")
+            cell.set_text_props(color="white", weight="bold")
+        elif row_idx % 2 == 0:
+            cell.set_facecolor("#f4f6f8")
+        else:
+            cell.set_facecolor("white")
+
+    fig.tight_layout()
+    fig.savefig(path, dpi=300, bbox_inches="tight")
+    plt.close(fig)
+    print(f"Tabla PNG guardada: {path}")
+
+
+def write_table_artifacts(
+    csv_path: Path,
+    png_path: Path,
+    rows: list[dict[str, float]],
+    fieldnames: list[str],
+    title: str,
+    labels: dict[str, str] | None = None,
+) -> None:
+    write_csv(csv_path, rows, fieldnames)
+    print(f"Tabla CSV guardada: {csv_path}")
+    label_map = labels or {}
+    render_table_png(
+        png_path,
+        rows,
+        [(field, label_map.get(field, field)) for field in fieldnames],
+        title,
+    )
+
+
 def load_serial_times(path: Path = SERIAL_FILE) -> dict[int, float]:
     rows = average_by(path, ("N",))
     return {int(row["N"]): float(row["tiempo_s"]) for row in rows}

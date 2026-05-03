@@ -10,7 +10,7 @@ from traffic_plot_utils import (
     average_by,
     ensure_dirs,
     save_figure,
-    write_csv,
+    write_table_artifacts,
 )
 import matplotlib.pyplot as plt
 
@@ -74,21 +74,30 @@ def main() -> None:
     save_figure(fig, out_png)
 
     out_csv = TABLES_DIR / "traffic_density_summary.csv"
-    write_csv(
+    write_table_artifacts(
         out_csv,
+        TABLES_DIR / "traffic_density_summary.png",
         rows,
         [
             "densidad",
             "densidad_real",
             "tiempo_s",
-            "mceldas_s",
             "velocidad",
             "flujo",
             "std_tiempo_s",
             "trials",
         ],
+        "Resumen de densidad",
+        {
+            "densidad": "Densidad",
+            "densidad_real": "Densidad real",
+            "tiempo_s": "Tiempo (s)",
+            "velocidad": "Velocidad",
+            "flujo": "Flujo",
+            "std_tiempo_s": "Std tiempo",
+            "trials": "Rep.",
+        },
     )
-    print(f"Tabla guardada: {out_csv}")
 
 
 if __name__ == "__main__":

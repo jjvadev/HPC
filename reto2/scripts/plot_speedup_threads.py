@@ -13,7 +13,7 @@ from traffic_plot_utils import (
     load_serial_times,
     save_figure,
     size_labels,
-    write_csv,
+    write_table_artifacts,
 )
 import matplotlib.pyplot as plt
 
@@ -65,12 +65,21 @@ def main() -> None:
     save_figure(fig, PLOTS_DIR / "traffic_speedup_openmp_threads.png")
 
     out_csv = TABLES_DIR / "traffic_speedup_openmp_threads.csv"
-    write_csv(
+    write_table_artifacts(
         out_csv,
+        TABLES_DIR / "traffic_speedup_openmp_threads.png",
         table_rows,
         ["N", "hilos", "tiempo_serial_s", "tiempo_openmp_s", "speedup", "eficiencia"],
+        "Speedup OpenMP por hilos",
+        {
+            "N": "N",
+            "hilos": "Hilos",
+            "tiempo_serial_s": "Serial (s)",
+            "tiempo_openmp_s": "OpenMP (s)",
+            "speedup": "Speedup",
+            "eficiencia": "Eficiencia",
+        },
     )
-    print(f"Tabla guardada: {out_csv}")
 
 
 if __name__ == "__main__":

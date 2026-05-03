@@ -13,6 +13,10 @@ SCRIPTS = (
     "plot_speedup_threads.py",
     "plot_speedup_o3.py",
     "plot_speedup_global.py",
+    "generate_tables.py",
+    "generate_cpu_profiling_tables.py",
+    "plot_cpu_profiling.py",
+    "generate_memory_profiling.py",
 )
 
 
