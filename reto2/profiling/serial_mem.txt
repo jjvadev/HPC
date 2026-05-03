@@ -1,0 +1,248 @@
+--------------------------------------------------------------------------------
+-- Metadata
+--------------------------------------------------------------------------------
+Invocation:       /usr/bin/cg_annotate profiling/cachegrind_serial.out
+Command:          ./traffic_serial_val 5000000 1000 0.5
+Events recorded:  Ir
+Events shown:     Ir
+Event sort order: Ir
+Threshold:        0.1%
+Annotation:       on
+
+--------------------------------------------------------------------------------
+-- Summary
+--------------------------------------------------------------------------------
+Ir______________________ 
+
+198,089,633,181 (100.0%)  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+-- File:function summary
+--------------------------------------------------------------------------------
+  Ir____________________________  file:function
+
+< 197,794,568,855 (99.9%, 99.9%)  /home/caedmual/Escritorio/Sistemas7/HPC/repo/HPC/reto2/traffic_serial.c:
+  197,587,037,264 (99.7%)           update_road
+
+--------------------------------------------------------------------------------
+-- Function:file summary
+--------------------------------------------------------------------------------
+  Ir____________________________  function:file
+
+> 197,587,037,264 (99.7%, 99.7%)  update_road:/home/caedmual/Escritorio/Sistemas7/HPC/repo/HPC/reto2/traffic_serial.c
+
+--------------------------------------------------------------------------------
+-- Annotated source file: /home/caedmual/Escritorio/Sistemas7/HPC/repo/HPC/reto2/traffic_serial.c
+--------------------------------------------------------------------------------
+Ir____________________ 
+
+-- line 24 ----------------------------------------
+             .          #include <stdio.h>
+             .          #include <stdlib.h>
+             .          #include <string.h>
+             .          #include <time.h>
+             .          
+             .          /* ----------------------------------------------------------------
+             .           * Retorna tiempo actual en segundos (alta resolucion)
+             .           * ---------------------------------------------------------------- */
+            14  (0.0%)  static double wall_time(void) {
+             .              struct timespec ts;
+             8  (0.0%)      clock_gettime(CLOCK_MONOTONIC, &ts);
+            18  (0.0%)      return ts.tv_sec + ts.tv_nsec * 1e-9;
+            10  (0.0%)  }
+             .          
+             .          /* ----------------------------------------------------------------
+             .           * Inicializar carretera con densidad dada
+             .           * ---------------------------------------------------------------- */
+             7  (0.0%)  static void init_road(int *road, int N, double density) {
+    20,000,005  (0.0%)      for (int i = 1; i <= N; i++) {
+    30,000,000  (0.0%)          double r = (double)rand() / ((double)RAND_MAX + 1.0);
+    15,000,000  (0.0%)          if (r < density){
+    17,505,712  (0.0%)              road[i] = 1;
+             .                  } else {
+    14,995,104  (0.0%)              road[i] = 0;
+             .                  }
+             .              }
+             8  (0.0%)      road[0]   = road[N];
+             9  (0.0%)      road[N+1] = road[1];
+             3  (0.0%)  }
+             .          
+             .          
+             .          /* ----------------------------------------------------------------
+             .           * Contar autos totales
+             .           * ---------------------------------------------------------------- */
+            10  (0.0%)  static int count_cars(const int *road, int N) {
+             2  (0.0%)      int total = 0;
+    40,000,010  (0.0%)      for (int i = 1; i <= N; i++) {
+    70,000,000  (0.0%)          total += road[i];
+             .              }
+             2  (0.0%)      return total;
+             4  (0.0%)  }
+             .          
+             .          /* ----------------------------------------------------------------
+             .           * Un paso de tiempo: aplica reglas y retorna autos que se movieron
+             .           reglas:
+             .           * - Si hay carro y adelante está libre, avanza.
+             .           * - Si hay carro y adelante está ocupado, se queda.
+             .           * - Si una celda está vacía y atrás había carro, el carro llega.
+             .           * 
+             .           * retorna el número de autos que se movieron (para calcular velocidad)
+             .           * ---------------------------------------------------------------- */
+         6,000  (0.0%)  static int update_road(const int *old, int *new_road, int N) {
+         1,000  (0.0%)      int moved = 0;
+             .          
+             .              
+20,000,005,000 (10.1%)      for (int i = 1; i <= N; i++) {
+35,000,000,000 (17.7%)          int curr = old[i];
+40,000,000,000 (20.2%)          int right = old[i+1];
+40,000,000,000 (20.2%)          int left = old[i-1];
+15,001,632,000  (7.6%)          if (curr == 1 && right == 0) {
+14,477,968,416  (7.3%)              new_road[i] = 0;  // auto avanza
+ 4,825,989,472  (2.4%)              moved++;
+10,172,378,528  (5.1%)          } else if (curr == 0 && left == 1) {
+16,890,963,152  (8.5%)              new_road[i] = 1;  // auto llega
+             .                  } else {
+ 1,218,073,696  (0.6%)              new_road[i] = curr; // se queda igual
+             .                  }
+             .              }
+             .              
+         8,000  (0.0%)      new_road[0]   = new_road[N];
+         9,000  (0.0%)      new_road[N+1] = new_road[1];
+         1,000  (0.0%)      return moved;
+         2,000  (0.0%)  }
+             .          
+             .          /* ----------------------------------------------------------------
+             .           * Validadr parametros de entrada
+             .           * ---------------------------------------------------------------- */
+             .          
+             7  (0.0%)  static int validate_params(int N, int pasos, double density) {
+             2  (0.0%)      if (N <= 0) {
+             .                  fprintf(stderr, "Error: N debe ser > 0\n");
+             .                  return 0;
+             .              }
+             2  (0.0%)      if (pasos <= 0) {
+             .                  fprintf(stderr, "Error: pasos debe ser > 0\n");
+             .                  return 0;
+             .              }
+             7  (0.0%)      if (density < 0.0 || density > 1.0) {
+             .                  fprintf(stderr, "Error: densidad debe estar entre 0.0 y 1.0\n");
+             .                  return 0;
+             .              }
+             1  (0.0%)      return 1;
+             2  (0.0%)  }
+             .          
+             .          /* ================================================================
+             .           * MAIN
+             .           * ================================================================ */
+             6  (0.0%)  int main(int argc, char *argv[]) {
+             .          
+             .              /* --- Parametros --- */
+             9  (0.0%)      int    N       = (argc >= 2) ? atoi(argv[1]) : 5000;
+             9  (0.0%)      int    pasos   = (argc >= 3) ? atoi(argv[2]) : 1000;
+            10  (0.0%)      double density = (argc >= 4) ? atof(argv[3]) : 0.5;
+             .              
+             9  (0.0%)      if (!validate_params(N, pasos, density)) {
+             .                  fprintf(stderr, "Uso: %s <N> <pasos> <densidad>\n", argv[0]);
+             .                  return 1;
+             .              }
+            10  (0.0%)      int    warmup  = pasos / 5;   /* 20% de pasos como calentamiento */
+             .          
+             2  (0.0%)      srand(42);   /* semilla fija para reproducibilidad */
+             .          
+             .              /* --- Reservar memoria --- */
+             7  (0.0%)      int *road_a = (int *)malloc((N + 2) * sizeof(int));
+             7  (0.0%)      int *road_b = (int *)malloc((N + 2) * sizeof(int));
+             .          
+             4  (0.0%)      if (road_a == NULL || road_b == NULL) {
+             .                  fprintf(stderr, "Error: No se pudo reservar memoria\n");
+             .                  free(road_a);
+             .                  free(road_b);
+             .                  return 1;
+             .              }
+             .          
+             .              /* --- Inicializar --- */
+             7  (0.0%)      init_road(road_a, N, density);
+             .          
+             .              // Contar autos iniciales y densidad real
+             6  (0.0%)      int ncars = count_cars(road_a, N);
+             6  (0.0%)      double real_density = (double)ncars / N;
+             .          
+             3  (0.0%)      printf("================================================\n");
+             3  (0.0%)      printf("  Cellular Automaton - Trafico [SERIAL]\n");
+             3  (0.0%)      printf("================================================\n");
+             6  (0.0%)      printf("  N              : %d\n", N);
+             6  (0.0%)      printf("  Pasos          : %d\n", pasos);
+             6  (0.0%)      printf("  Densidad dada  : %.4f\n", density);
+             6  (0.0%)      printf("  Autos iniciales: %d\n", ncars);
+             6  (0.0%)      printf("  Densidad real  : %.4f\n", real_density);
+             6  (0.0%)      printf("  Warmup         : %d pasos\n", warmup);
+             3  (0.0%)      printf("------------------------------------------------\n");
+             .          
+             .              /* ============================================================
+             .               * INICIO MEDICION WALL TIME
+             .               * ============================================================ */
+             .              
+             2  (0.0%)      int *old   = road_a;
+             2  (0.0%)      int *new_road = road_b;
+             .              
+             2  (0.0%)      double suma_vel  = 0.0;
+             1  (0.0%)      int    n_medidas = 0;
+             .              
+             3  (0.0%)      double t_inicio = wall_time();
+             .          
+         4,005  (0.0%)      for (int t = 0; t < pasos; t++) {
+         7,000  (0.0%)          int moved = update_road(old, new_road, N);
+             .          
+             .                  /* Intercambio de punteros (evita memcpy O(N) en cada paso) */
+         2,000  (0.0%)          int *tmp = old; 
+         2,000  (0.0%)          old = new_road; 
+         2,000  (0.0%)          new_road = tmp;
+             .          
+             .                  /* Acumular velocidad solo despues del warmup */
+         3,000  (0.0%)          if (t >= warmup) {
+         7,200  (0.0%)              double velocity = (ncars > 0) ? (double)moved / ncars : 0.0;
+         2,400  (0.0%)              suma_vel += velocity;
+           800  (0.0%)              n_medidas++;
+             .                  }
+             .              }
+             .          
+             3  (0.0%)      double t_fin = wall_time();
+             .              /* ============================================================
+             .               * FIN MEDICION WALL TIME
+             .               * ============================================================ */
+             .          
+             3  (0.0%)      double wall_s        = t_fin - t_inicio;
+             8  (0.0%)      double vel_promedio  = (n_medidas > 0) ? suma_vel / n_medidas : 0.0;
+             9  (0.0%)      double mcells_per_s  = (double)N * pasos / wall_s / 1.0e6;
+             .          
+             3  (0.0%)      printf("\n  -- RESULTADOS --\n");
+             6  (0.0%)      printf("  Wall time          : %.6f s\n", wall_s);
+             6  (0.0%)      printf("  Rendimiento        : %.2f MCeldas/s\n", mcells_per_s);
+             6  (0.0%)      printf("  Velocidad promedio : %.6f\n", vel_promedio);
+            10  (0.0%)      printf("  Carros finales     : %d\n", count_cars(old, N));
+             3  (0.0%)      printf("================================================\n");
+             .          
+             3  (0.0%)      printf("\nCSV:\n");
+             3  (0.0%)      printf("version,hilos,N,pasos,densidad,densidad_real,tiempo_s,mceldas_s,velocidad\n");
+            17  (0.0%)      printf("serial,1,%d,%d,%.4f,%.4f,%.6f,%.2f,%.6f\n",
+             .                 N, pasos, density, real_density,
+             .                     wall_s, mcells_per_s, vel_promedio);
+             .          
+             .          
+             3  (0.0%)      free(road_a);
+             3  (0.0%)      free(road_b);
+             1  (0.0%)      return 0;
+             2  (0.0%)  }
+
+--------------------------------------------------------------------------------
+-- Annotation summary
+--------------------------------------------------------------------------------
+Ir_____________________ 
+
+197,794,568,855 (99.9%)    annotated: files known & above threshold & readable, line numbers known
+              0            annotated: files known & above threshold & readable, line numbers unknown
+              0          unannotated: files known & above threshold & two or more non-identical
+              0          unannotated: files known & above threshold & unreadable 
+    285,063,861  (0.1%)  unannotated: files known & below threshold
+     10,000,465  (0.0%)  unannotated: files unknown
+
