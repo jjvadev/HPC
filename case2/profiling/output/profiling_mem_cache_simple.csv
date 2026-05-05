@@ -1,0 +1,6 @@
+Funcion,L1DC Ld Misses,L1DC St Misses,L1DTLB Misses
+TOTAL,864991,737,1034
+matmul,864929,487,1016
+fill_random_matrices,0,155,3
+zero_matrix,0,88,7
+checksum_matrix,39,0,0

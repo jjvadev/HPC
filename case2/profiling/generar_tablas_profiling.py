@@ -45,6 +45,13 @@ CODE_SYMBOLS = {
     "wall_seconds_now",
 }
 
+IMPORTANT_MEM_SYMBOLS = (
+    "matmul",
+    "fill_random_matrices",
+    "zero_matrix",
+    "checksum_matrix",
+)
+
 
 TIME_RE = re.compile(
     r"^\s*(?P<value>\d+(?:\.\d+)?)\s*(?P<unit>min|s|ms)\s+"
@@ -169,6 +176,139 @@ def write_csv(path: Path, headers: list[str], rows: list[list[object]]) -> None:
         writer = csv.writer(file)
         writer.writerow(headers)
         writer.writerows(rows)
+
+
+def render_table_png(
+    path: Path,
+    title: str,
+    headers: list[str],
+    rows: list[list[object]],
+    *,
+    font_size: int = 10,
+    width_scale: float = 1.2,
+    height_scale: float = 0.48,
+    title_pad: int = 18,
+) -> None:
+    n_rows = len(rows) + 1
+    n_cols = len(headers)
+    fig_width = max(10, n_cols * width_scale)
+    fig_height = max(3.5, n_rows * height_scale)
+
+    fig, ax = plt.subplots(figsize=(fig_width, fig_height))
+    ax.axis("off")
+
+    table = ax.table(
+        cellText=rows,
+        colLabels=headers,
+        loc="center",
+        cellLoc="center",
+    )
+
+    table.auto_set_font_size(False)
+    table.set_fontsize(font_size)
+    table.scale(1.0, 1.25)
+
+    for cell in table.get_celld().values():
+        cell.get_text().set_parse_math(False)
+
+    for col_idx in range(n_cols):
+        cell = table[(0, col_idx)]
+        cell.set_facecolor("#D9EAF7")
+        cell.set_text_props(weight="bold")
+
+    for row_idx in range(1, n_rows):
+        label_cell = table[(row_idx, 0)]
+        label_cell.set_text_props(weight="bold")
+        if row_idx % 2 == 0:
+            for col_idx in range(n_cols):
+                table[(row_idx, col_idx)].set_facecolor("#F7F7F7")
+
+    plt.title(title, fontsize=14, pad=title_pad)
+    fig.tight_layout()
+    fig.savefig(path, dpi=300, bbox_inches="tight")
+    plt.close(fig)
+
+
+def cpu_rows_to_table_rows(rows: list[CpuRow]) -> list[list[object]]:
+    return [
+        [f"{row.weight_s:.6f}", f"{row.self_s:.6f}", row.symbol]
+        for row in rows
+    ]
+
+
+def write_cpu_profile_tables() -> None:
+    for key, meta in VARIANTS.items():
+        rows = parse_cpu_file(BASE_DIR / meta["cpu"])
+        render_table_png(
+            OUT_DIR / f"profiling_cpu_{key}.png",
+            f"Profiling CPU - {meta['label']}",
+            ["Weight (s)", "Self Weight (s)", "Symbol Names"],
+            cpu_rows_to_table_rows(rows),
+            font_size=9,
+            width_scale=1.9,
+            height_scale=0.34,
+            title_pad=14,
+        )
+
+
+def build_simple_mem_table_rows(rows: list[CounterRow]) -> list[list[object]]:
+    by_symbol = {row.symbol: row for row in rows}
+    simple_rows: list[list[object]] = []
+
+    total = rows[0]
+    simple_rows.append(
+        [
+            "TOTAL",
+            total.l1d_load_misses,
+            total.l1d_store_misses,
+            total.l1dtlb_misses,
+        ]
+    )
+
+    for symbol in IMPORTANT_MEM_SYMBOLS:
+        row = by_symbol.get(symbol)
+        if row is None:
+            simple_rows.append([symbol, 0, 0, 0])
+            continue
+        simple_rows.append(
+            [
+                symbol,
+                row.l1d_load_misses,
+                row.l1d_store_misses,
+                row.l1dtlb_misses,
+            ]
+        )
+
+    return simple_rows
+
+
+def write_simple_mem_tables() -> None:
+    for key, meta in VARIANTS.items():
+        rows = parse_counter_file(BASE_DIR / meta["mem"])
+        table_rows = build_simple_mem_table_rows(rows)
+        headers = [
+            "Funcion",
+            "L1DC Ld Misses",
+            "L1DC St Misses",
+            "L1DTLB Misses",
+        ]
+
+        write_csv(
+            OUT_DIR / f"profiling_mem_{key}_simple.csv",
+            headers,
+            table_rows,
+        )
+
+        render_table_png(
+            OUT_DIR / f"profiling_mem_{key}_simple.png",
+            f"Memoria (tabla simple) - {meta['label']}",
+            headers,
+            table_rows,
+            font_size=10,
+            width_scale=1.8,
+            height_scale=0.62,
+            title_pad=14,
+        )
 
 
 def build_cpu_summary() -> list[dict[str, object]]:
@@ -494,6 +634,9 @@ def write_report_snippet(
 def main() -> None:
     OUT_DIR.mkdir(exist_ok=True)
 
+    write_cpu_profile_tables()
+    write_simple_mem_tables()
+
     cpu_summary = build_cpu_summary()
     function_summary = build_cpu_function_summary()
     counter_summary = build_counter_summary()
@@ -522,6 +665,33 @@ def main() -> None:
         ],
     )
 
+    render_table_png(
+        OUT_DIR / "profiling_cpu_summary.png",
+        "Tabla resumen CPU por variante",
+        [
+            "Variante",
+            "Ejecutable",
+            "CPU total (s)",
+            "CPU matmul (s)",
+            "Self CPU matmul (s)",
+            "% matmul",
+        ],
+        [
+            [
+                row["variant_label"],
+                row["executable"],
+                f"{row['total_cpu_s']:.6f}",
+                f"{row['matmul_cpu_s']:.6f}",
+                f"{row['matmul_self_s']:.6f}",
+                f"{row['matmul_pct_total']:.6f}",
+            ]
+            for row in cpu_summary
+        ],
+        font_size=10,
+        width_scale=1.55,
+        height_scale=0.48,
+    )
+
     write_csv(
         OUT_DIR / "profiling_cpu_funciones.csv",
         [
@@ -543,6 +713,33 @@ def main() -> None:
             ]
             for row in function_summary
         ],
+    )
+
+    render_table_png(
+        OUT_DIR / "profiling_cpu_funciones.png",
+        "Tabla de funciones mas costosas en CPU",
+        [
+            "Variante",
+            "Funcion",
+            "CPU acumulado (s)",
+            "Self CPU (s)",
+            "% del total",
+            "Apariciones",
+        ],
+        [
+            [
+                row["variant_label"],
+                row["symbol"],
+                f"{row['cpu_weight_s']:.6f}",
+                f"{row['cpu_self_s']:.6f}",
+                f"{row['cpu_pct_total']:.6f}",
+                row["occurrences"],
+            ]
+            for row in function_summary
+        ],
+        font_size=9,
+        width_scale=1.55,
+        height_scale=0.38,
     )
 
     write_csv(
@@ -578,6 +775,43 @@ def main() -> None:
         ],
     )
 
+    render_table_png(
+        OUT_DIR / "profiling_l1d_summary.png",
+        "Tabla resumen de L1D/L1DTLB en matmul",
+        [
+            "Variante",
+            "Ejecutable",
+            "Total L1D load",
+            "Total L1D store",
+            "Total L1DTLB",
+            "Matmul L1D load",
+            "% load",
+            "Matmul L1D store",
+            "% store",
+            "Matmul L1DTLB",
+            "% TLB",
+        ],
+        [
+            [
+                row["variant_label"],
+                row["executable"],
+                row["total_l1d_load_misses"],
+                row["total_l1d_store_misses"],
+                row["total_l1dtlb_misses"],
+                row["matmul_l1d_load_misses"],
+                f"{row['matmul_l1d_load_pct']:.6f}",
+                row["matmul_l1d_store_misses"],
+                f"{row['matmul_l1d_store_pct']:.6f}",
+                row["matmul_l1dtlb_misses"],
+                f"{row['matmul_l1dtlb_pct']:.6f}",
+            ]
+            for row in counter_summary
+        ],
+        font_size=8,
+        width_scale=1.25,
+        height_scale=0.42,
+    )
+
     write_csv(
         OUT_DIR / "profiling_comparacion_vs_secuencial.csv",
         [
@@ -597,6 +831,31 @@ def main() -> None:
             ]
             for row in speedups
         ],
+    )
+
+    render_table_png(
+        OUT_DIR / "profiling_comparacion_vs_secuencial.png",
+        "Comparacion de profiling vs secuencial",
+        [
+            "Variante",
+            "Speedup CPU total",
+            "Speedup CPU matmul",
+            "Reduccion L1D load (%)",
+            "Reduccion L1DTLB (%)",
+        ],
+        [
+            [
+                row["variant_label"],
+                f"{row['cpu_speedup_vs_secuencial']:.6f}",
+                f"{row['matmul_speedup_vs_secuencial']:.6f}",
+                f"{row['l1d_load_reduction_vs_secuencial_pct']:.6f}",
+                f"{row['l1dtlb_reduction_vs_secuencial_pct']:.6f}",
+            ]
+            for row in speedups
+        ],
+        font_size=10,
+        width_scale=1.55,
+        height_scale=0.52,
     )
 
     plot_cpu(cpu_summary, speedups)
